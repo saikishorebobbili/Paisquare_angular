@@ -21,6 +21,7 @@ export class HomepageComponent implements OnInit {
   showComments=''
   currentOpenId: any;
   following:any;
+  advertisementid:any=0;
   constructor(private _service: PaiService,private http: HttpClient,private _router: Router) {}
   userId=' ';
   ngOnInit(){
@@ -58,7 +59,8 @@ export class HomepageComponent implements OnInit {
     );
   }
   fetchadvertisement(){
-    this._service.getAllAdvertisements().subscribe(
+    this.advertisementid=0;
+    this._service.getAllAdvertisements(this.advertisementid).subscribe(
       data => {
       this.userId=this._service.userId;
       console.log("all advertisment list:",data)
@@ -145,12 +147,21 @@ export class HomepageComponent implements OnInit {
     }
     )
   }
-  facebook(advertisementid:Number){
-    const title = 'Shared Title';
-    const text = 'Check this out!';
-    const url = 'https://your-website-url.com';
+  Shareadvertisement(advertisementid:Number){
+    this._service.getAllAdvertisements(advertisementid).subscribe(
+      data=>{
+        console.log("advertisement by id",data)
+        const title = data.brandname;
+        console.log("data.brandname",data.brandname)
+        const text = 'Check this out!';
+        const url = 'https://your-website-url.com';
 
     this.share(title, text, url);
+      },
+      error=>{
+        console.log("Error occured");
+      }
+    )
   }
   async share(title: string, text: string, url: string) {
     try {
@@ -164,22 +175,4 @@ export class HomepageComponent implements OnInit {
       console.error('Error sharing:', error);
     }
   }
-  twitter(advertisementid:Number){
-
-  }
-  whatsApp(advertisementid:string){
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(advertisementid)}`;
-    window.open(whatsappUrl, '_blank');
-  }
-  instagram(advertisementid: string){
-    const instagramUrl = `https://www.instagram.com/bobbiliblo.gger/?utm_source=your_app&utm_medium=share_button&url=${encodeURIComponent(advertisementid)}`;
-    window.open(instagramUrl, '_blank');
-  }
-  pinterest(advertisementid:Number){
-
-  }
-  linkedin(advertisementid:Number){
-
-  }
-  
 }

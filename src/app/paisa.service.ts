@@ -28,8 +28,8 @@ export class PaiService {
   public CommentsFromRemote(comments: Comments,advertisementid: Number,userid:Number):Observable<any>{
     return this._http.post<any>(`http://localhost:3300/${userid}/${advertisementid}/comments`,comments)
   }
-  public getAllAdvertisements() {
-    return this._http.get<any>("http://localhost:3300/advertisements");
+  public getAllAdvertisements(advertisementid: Number) {
+    return this._http.get<any>(`http://localhost:3300/${advertisementid}/advertisements`);
   }
   public getAllCommentList(){
     return this._http.get<any>("http://localhost:3300/commentslist");
