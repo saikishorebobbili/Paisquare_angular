@@ -1,0 +1,120 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<div class="container">
+    <div class="row row-content">
+        <div class="col-12 col-sm-7 col-bg-7">
+            <h1 style="text-align:center;">Profile</h1>
+            <i class="fa fa-user fa-4x" style="text-align: center;"></i>
+        </div>
+        {{message}}
+        <div class="col-10 offset-sm-1"> 
+            <form #profileupdateform="ngForm" (ngSubmit)="profileupdateForm()" class="form-group">
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Brand name</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" class="form-control" [(ngModel)]="profile.brandname" name="brandname">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Bio</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" class="form-control" [(ngModel)]="profile.bio" name="brandname">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">First name</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.firstname" name="first_name">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Last name</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.lastname" name="last_name">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Email</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.email" name="email">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Number</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.mobilenumber" name="number">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Country</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.country" name="country">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Address</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <textarea class="form-control" [(ngModel)]="profile.address" name="address"></textarea>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Website</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.website" name="website">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Youtube</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.youtube" name="youtube">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Facebook</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.facebook" name="facebook">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Instagram</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.instagram" name="instagram">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Twitter</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.twitter" name="twitter">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Pinterest</label>
+                    <div class="col-12 col-sm-7 col-bg-7">
+                        <input class="form-control" [(ngModel)]="profile.pinterest" name="pinterest">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-12" style="text-align: center;">
+                        <input class="form-control" type="submit" name="submit" class="btn btn-primary">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br><br><br>
