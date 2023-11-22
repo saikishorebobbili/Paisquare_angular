@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: 'createaccount', component:RegistrationComponent },
   { path: 'homepage', component:HomepageComponent },
   { path: 'contactus',component:ContactusComponent},
+  { path: 'advertisement/:id', component: HomepageComponent }, 
+  { path: 'myadvertisement/:userId', component: HomepageComponent },
   { path: '', component:LandingcontentComponent}
 ];
 

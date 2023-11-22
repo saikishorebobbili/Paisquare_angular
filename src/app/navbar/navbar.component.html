@@ -27,7 +27,7 @@
                         <div class="dropdown-menu" id="advertiserdropdown">
                             <a class="dropdown-item" routerLink="/advdashboard">Dashboard</a>
                             <a class="dropdown-item" routerLink="/advreport">Report</a>
-                            <a class="dropdown-item" routerLink="/advhistory">History</a>
+                            <a class="dropdown-item" [routerLink]="['/myadvertisement', userId]">My Advertisements</a>
                             <a class="dropdown-item" routerLink="/advertisementform">Advertise</a>
                         </div>
                     </div>

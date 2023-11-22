@@ -1,5 +1,11 @@
 <app-navbar></app-navbar>
 <br><br><br>
+userID->{{userId}}
+<!-- Button to view a specific advertisement by ID -->
+<button [routerLink]="['/advertisement', 1]">View Advertisement with ID 123</button>
+
+<!-- Button to view advertisements by a specific user -->
+<button [routerLink]="['/myadvertisement', userId]">View Advertisements by User 123</button>
 
 <div  *ngFor="let ad of advertisements">
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PaiService } from '../paisa.service';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Comments,Follower,Visited,Like } from '../paisa';
 
 @Component({
@@ -11,6 +12,7 @@ import { Comments,Follower,Visited,Like } from '../paisa';
 })
 export class HomepageComponent implements OnInit {
   advertisements: any[] = [];
+  advertisementsListById: any[] = [];
   comments: any[] = [];
   followersuseridlist: any[]=[];
   followerslist: any[] = [];
@@ -22,10 +24,40 @@ export class HomepageComponent implements OnInit {
   currentOpenId: any;
   following:any;
   advertisementid:any=0;
-  constructor(private _service: PaiService,private http: HttpClient,private _router: Router) {}
+  constructor(private _service: PaiService,private http: HttpClient,private _router: Router,private _route: ActivatedRoute) {
+       
+  }
   userId=' ';
   ngOnInit(){
-    this.fetchadvertisement()
+    
+    this._route.params.subscribe(params => {
+      const adId = params['id']; // Access ad ID from URL if provided
+      const userId = params['userId']; // Access user ID from URL if provided
+  
+      if (adId) {
+        // Fetch and display specific ad by ID
+        this._service.getIDAdvertisements(adId).subscribe(
+          data => {
+            this.userId=this._service.userId;
+            this.advertisements = data;
+            console.log("advertisment list for id: ",adId,this.advertisements)
+          },
+            error=>{console.log("error occure while retrieving the data for ID -",adId)
+        });
+      } else if (userId) {
+        // Fetch and display ads by user
+        this._service.getUserAdvertisements(userId).subscribe(
+          data => {
+            this.userId=this._service.userId;
+            this.advertisements = data;
+            console.log("advertisment list for userId: ",adId,this.advertisements)
+          },
+            error=>{console.log("error occure while retrieving the data for userId -",userId)
+        });
+      } else {
+        this.fetchadvertisement()
+      }
+    });
     this.userId=this._service.userId;
     this._service.getAllFollowersList(+this.userId).subscribe(
       data =>{
@@ -60,7 +92,7 @@ export class HomepageComponent implements OnInit {
   }
   fetchadvertisement(){
     this.advertisementid=0;
-    this._service.getAllAdvertisements(this.advertisementid).subscribe(
+    this._service.getAllAdvertisements().subscribe(
       data => {
       this.userId=this._service.userId;
       console.log("all advertisment list:",data)
@@ -148,15 +180,18 @@ export class HomepageComponent implements OnInit {
     )
   }
   Shareadvertisement(advertisementid:Number){
-    this._service.getAllAdvertisements(advertisementid).subscribe(
+    this._service.getAllAdvertisements().subscribe(
       data=>{
         console.log("advertisement by id",data)
-        const title = data.brandname;
-        console.log("data.brandname",data.brandname)
-        const text = 'Check this out!';
-        const url = 'https://your-website-url.com';
-
-    this.share(title, text, url);
+        data.forEach((advertisement: any) => {
+          console.log("brandname brandname:", advertisement.brandname);
+          const title = advertisement.brandname;
+          const text = advertisement.description;
+          console.log("data.brandname",advertisement.description)
+          const url = advertisement.url;
+          console.log("data.brandname",advertisement.url)
+          this.share(title, text, url);
+        });
       },
       error=>{
         console.log("Error occured");
@@ -175,4 +210,8 @@ export class HomepageComponent implements OnInit {
       console.error('Error sharing:', error);
     }
   }
+
+  
+
+
 }
