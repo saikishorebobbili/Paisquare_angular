@@ -36,7 +36,7 @@
                     <div class="dropdown">
                         <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#settingsdropdown" data-toggle="dropdown" >Settings</a>
                         <div class="dropdown-menu" id="settingsdropdown">
-                            <a class="dropdown-item" routerLink="/profile">Profile</a>
+                            <a class="dropdown-item" [routerLink]="['/profile', userId]">Profile</a>
                             <a class="dropdown-item" routerLink="/profileupdate">Update profile</a>
                             <a class="dropdown-item" routerLink="/contactus">Contact Us</a>
                             <a class="dropdown-item" routerLink="/login">Logout</a>

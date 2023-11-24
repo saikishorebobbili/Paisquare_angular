@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Profile } from '../paisa';
 import { Router } from '@angular/router';
 import { PaiService } from '../paisa.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -13,12 +14,20 @@ export class ProfileComponent {
   message=''
   userId=''
   username=''
-  constructor(private _service: PaiService,private _router: Router) {}
+  constructor(private _service: PaiService,private _router: Router,private _route: ActivatedRoute) {}
   
   ngOnInit(){
     this.username=this._service.userName
-    // loading profile data
-    this._service.getProfileList(this._service.userId).subscribe(
+    this._route.params.subscribe(params => {
+      const advertiserId = params['id']; 
+      if (advertiserId) {
+        this.getProfile(advertiserId)
+      }
+    });
+  }
+  // loading profile data
+  getProfile(advertiserId:Number){
+    this._service.getProfileList(advertiserId).subscribe(
       data =>{
         this.profile=data;
         console.log("profile data is:",this.profile);

@@ -17,15 +17,32 @@ userID->{{userId}}
                                 <div class="card" >
                                     <div class="card-header bg-primary">
                                         <div class="row row-content">
-                                            <div class="col-12 col-sm-9 col-xs-3 col-bg-9">
+                                            <div class="col-12 col-sm-9 col-xs-3 col-bg-9 d-flex justify-content-between">
                                                 <h2 style="color: rgb(255, 255, 255);">{{ad.brandname}}</h2>
+                                                
+                                                <button data-toggle="modal" data-target="#info" style="size: 90px; border:none; font-size: 30px; margin-right: 0px;" id="#share" class="mb-0 btn-lg bg-primary">&#8942;
+                                                </button>
                                             </div>
                                         </div>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <span><button class="btn btn-primary" [routerLink]="['/profile', ad.advertiser.id]">Visit profile</button></span>
+                                                        <span><button class="btn btn-primary" [routerLink]="['/block',  ad.advertiser.id]">Block</button></span>
+                                                        <span><button class="btn btn-primary" [routerLink]="['/reportadvertisement',  ad.id]">Report</button></span>
+                                                        <span><button class="btn btn-primary" [routerLink]="['/save',  ad.id]">Saved</button></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div class="card-body">
                                         <a role="button"  target="_blank" style="text-decoration: none;">
                                             <div class="card-body">
-                                                <h3>{{ad.description}}</h3>
+                                                <div [innerHTML]="ad.description"></div>
                                                 <h3>ad.advertiser.id:{{ad.advertiser.id}}</h3>
                                                 <h3>ad.id:{{ad.id}}</h3>
                                             </div>

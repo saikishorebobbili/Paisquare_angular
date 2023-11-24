@@ -8,7 +8,7 @@ import { RegistrationComponent } from './landingpage/registration/registration.c
 import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LandingpageComponent } from './landingpage/landingpage.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomepageComponent } from './homepage/advertisements/homepage.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AdvertisementformComponent } from './homepage/advertisementform/advertisementform.component';
 import { ContactusComponent } from './contactus/contactus.component';
@@ -16,7 +16,8 @@ import { LandingnavbarComponent } from './landingpage/landingnavbar/landingnavba
 import { LandingcontentComponent } from './landingpage/landingcontent/landingcontent.component';
 import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { EditorModule } from 'primeng/editor';
+import { CheckboxModule } from 'primeng/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,9 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   imports: [
     BrowserModule,
+    EditorModule,
     FormsModule,
+    CheckboxModule,
     HttpClientModule,
     AppRoutingModule
   ],

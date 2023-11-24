@@ -1,0 +1,16 @@
+h4{
+    font-family: Arial, Helvetica, sans-serif;
+}
+#id{
+    font-size: x-small;
+}
+.p-editor .ql-toolbar button .ql-svg path {
+    font-size: 20px; /* Change this value as needed for your large icon size */
+  }
+  
+  /* Adjust the icon size for larger screens */
+  @media screen and (min-width: 768px) {
+    .p-editor .ql-toolbar button .ql-svg path {
+      font-size: 30px; /* Change this value for larger screens */
+    }
+  }

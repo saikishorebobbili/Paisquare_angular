@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { PaiService } from '../paisa.service';
+import { Component, OnInit ,ElementRef} from '@angular/core';
+import { PaiService } from '../../paisa.service';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Comments,Follower,Visited,Like } from '../paisa';
+import { Comments,Follower,Visited,Like } from '../../paisa';
 
 @Component({
   selector: 'app-homepage',
@@ -29,7 +29,6 @@ export class HomepageComponent implements OnInit {
   }
   userId=' ';
   ngOnInit(){
-    
     this._route.params.subscribe(params => {
       const adId = params['id']; // Access ad ID from URL if provided
       const userId = params['userId']; // Access user ID from URL if provided

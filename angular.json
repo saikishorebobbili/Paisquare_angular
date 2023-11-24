@@ -71,7 +71,10 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pai_square:build"
+            "browserTarget": "pai_square:build",
+            "allowedCommonJsDependencies": [
+              "lodash"
+           ]
           }
         },
         "test": {
@@ -87,6 +90,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeng/resources/themes/saga-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css"
             ],
             "scripts": []
