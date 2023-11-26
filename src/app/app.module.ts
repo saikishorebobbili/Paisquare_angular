@@ -18,6 +18,10 @@ import { ProfileupdateComponent } from './profileupdate/profileupdate.component'
 import { ProfileComponent } from './profile/profile.component';
 import { EditorModule } from 'primeng/editor';
 import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
+import { ChartModule } from 'primeng/chart';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,15 +36,19 @@ import { CheckboxModule } from 'primeng/checkbox';
     LandingnavbarComponent,
     LandingcontentComponent,
     ProfileupdateComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdvertiserreportsComponent
   ],
   imports: [
     BrowserModule,
+    DialogModule,
+    BrowserAnimationsModule,
     EditorModule,
     FormsModule,
     CheckboxModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

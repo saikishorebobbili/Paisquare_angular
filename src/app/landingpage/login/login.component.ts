@@ -12,7 +12,7 @@ export class LoginComponent {
   user= new User();
   message=''
   constructor(private _service: PaiService, private _router: Router){};
-
+  
   userLogin(){
     if(this.user.email!='' && this.user.password!=''){
       this._service.loginUserFromRemote(this.user).subscribe(

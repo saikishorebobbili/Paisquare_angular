@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Advertise, User,Contactus,Comments, Follower, Visited, Like, Profile } from './paisa';
+import { Advertise, User,Contactus,Comments, Follower, Visited, Like, Profile,Favourite, Block, Report } from './paisa';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { Observable } from 'rxjs';
 import {HttpClient } from '@angular/common/http';
@@ -34,9 +34,9 @@ export class PaiService {
   public getAllCommentList(){
     return this._http.get<any>("http://localhost:3300/commentslist");
   }
-  public getAllFollowersList(userId:Number){
+  public getUserdata(userId:Number){
     console.log("from service log__",userId)
-    return this._http.get<any>(`http://localhost:3300/${userId}/followerslist`);
+    return this._http.get<any>(`http://localhost:3300/${userId}/userdata`);
   }
   public CommentsListFromRemote(advertisementid: Number){
     return this._http.get<any>(`http://localhost:3300/${advertisementid}/commentslist`);
@@ -61,6 +61,15 @@ export class PaiService {
   }
   public getUserAdvertisements(userId:Number){
     return this._http.get<any>(`http://localhost:3300/${userId}/useradvertisements`);
+  }
+  public postBlockAdvertiser(block:Block,userid:Number,advertiserId:Number){
+    return this._http.post<any>(`http://localhost:3300/${userid}/${advertiserId}/blockadvertiser`,block);
+  }
+  public postReportadvertisement(report:Report){
+    return this._http.post<any>(`http://localhost:3300/reportadvertisement`,report);
+  }
+  public postfavouriteAdvertisement(favourite:Favourite,userid:Number,advertisementid:Number){
+    return this._http.post<any>(`http://localhost:3300/${userid}/${advertisementid}/addAdvetisementToFavourite`,favourite);
   }
 }
 

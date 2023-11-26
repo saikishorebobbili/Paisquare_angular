@@ -1,9 +1,9 @@
-import { Component, OnInit ,ElementRef} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PaiService } from '../../paisa.service';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Comments,Follower,Visited,Like } from '../../paisa';
+import { Comments,Follower,Visited,Like, Block, Report,Favourite } from '../../paisa';
 
 @Component({
   selector: 'app-homepage',
@@ -11,14 +11,28 @@ import { Comments,Follower,Visited,Like } from '../../paisa';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  options = [
+    { id: 'radio1', label: 'Violent', value: 'violent' },
+    { id: 'radio2', label: 'Hateful', value: 'Hateful' },
+    { id: 'radio3', label: 'Harassment', value: 'Harassment' },
+    { id: 'radio4', label: 'harmful', value: 'harmful' },
+    { id: 'radio5', label: 'Misinformation', value: 'Misinformation' },
+    { id: 'radio6', label: 'Child Abuse', value: 'Child Abuse' },
+    { id: 'radio7', label: 'Spam/ Misleading', value: 'Spam/ Misleading' }
+  ];
   advertisements: any[] = [];
   advertisementsListById: any[] = [];
   comments: any[] = [];
   followersuseridlist: any[]=[];
   followerslist: any[] = [];
+  userData: any[] = [];
+  blockedlist: any[]=[];
+  favouriteslist: any[]=[];
   commentobj= new Comments();
   followerobj= new Follower();
   visitobj=new Visited();
+  blockobj=new Block();
+  favouriteobj=new Favourite();
   message=''
   showComments=''
   currentOpenId: any;
@@ -28,6 +42,11 @@ export class HomepageComponent implements OnInit {
        
   }
   userId=' ';
+  displayDialog: boolean = false;
+
+  showDialog() {
+    this.displayDialog = true;
+  }
   ngOnInit(){
     this._route.params.subscribe(params => {
       const adId = params['id']; // Access ad ID from URL if provided
@@ -58,29 +77,23 @@ export class HomepageComponent implements OnInit {
       }
     });
     this.userId=this._service.userId;
-    this._service.getAllFollowersList(+this.userId).subscribe(
-      data =>{
-        console.log("console.log(this._service.userId)",this.userId)
-        this.followerslist=data;
-        console.log("fromfollower--->",data,"------->",this.followerslist);
-        this.followerslist.forEach((follower: any) => {
-          console.log("Follower username:", follower.username);
-          // Perform operations with follower.username or other properties here
-        });
-      },
-      error=>{
-        console.log("error occured in followerslist")
-      }
-    );
+    this.fetchUserData();
   }
-  fetchfollowers(){
-    this._service.getAllFollowersList(+this.userId).subscribe(
+  fetchUserData(){
+    this._service.getUserdata(+this.userId).subscribe(
       data =>{
         console.log("console.log(this._service.userId)",this.userId)
-        this.followerslist=data;
+        this.userData=data;
         console.log("fromfollower--->",data,"------->",this.followerslist);
-        this.followerslist.forEach((follower: any) => {
-          console.log("Follower username:", follower.username);
+        data.forEach((user: any) => {
+          this.followerslist=user.following;
+          this.blockedlist=user.blocked;
+          this.favouriteslist=user.favourites;
+          console.log("user data from fetch user data-->")
+          console.log("user data from fetch user data-(data->",user);
+          console.log("followerslist",this.followerslist)
+          console.log("blockedlist",this.blockedlist)
+          console.log("favouriteslist",this.favouriteslist)
           // Perform operations with follower.username or other properties here
         });
       },
@@ -101,6 +114,41 @@ export class HomepageComponent implements OnInit {
       error=>{console.log("error occure while retrieving the data!")
     });
   }
+
+  selectedOption='';
+  selectOptionText='';
+  reportobj=new Report();
+  reportmessage='';
+  Reportadvertisement(advertisementId:Number) {
+    console.log('Selected option:', this.selectedOption);
+    console.log('Selected option:', this.selectOptionText);
+    this.reportobj.advertisementid=advertisementId;
+    this.reportobj.userid=this.userId;
+    if(this.selectedOption==='none')
+      this.reportobj.reportedtext=this.selectOptionText;
+    else
+      this.reportobj.reportedtext=this.selectedOption;
+    if(this.reportobj.reportedtext!==''){
+      console.log("reportedText",this.reportobj.reportedtext)
+      this._service.postReportadvertisement(this.reportobj).subscribe(
+        data=>{
+          console.log("reported successfully",data);
+          this.fetchUserData()
+        },
+        error=>{
+          console.log("error occured while reporting");
+        }
+      )
+    }
+    else{
+      this.reportmessage="Select correct option";
+    }
+    this.selectedOption='';
+    this.selectOptionText='';
+    
+  }
+
+
   likeobj=new Like();
   like(advertisementid:Number){
     this.likeobj.advertisementid=advertisementid;
@@ -131,6 +179,35 @@ export class HomepageComponent implements OnInit {
       }
     )
   }
+  block(advertiserid: number){
+    this.blockobj.userid=this._service.userId;
+    this.blockobj.advertiserid=advertiserid;
+    this.blockobj.Blocked=true;
+    this._service.postBlockAdvertiser(this.blockobj,this._service.userId,advertiserid).subscribe(
+      data=>{
+        console.log("blocked successfully")
+        this.fetchUserData()
+      },
+      error=>{
+        console.log("error occured while blocking advertiser")
+      }
+    )
+  }
+  favourite(advertisementid: number){
+    this.favouriteobj.userid=this._service.userId;
+    this.favouriteobj.advertisementid=advertisementid;
+    this.favouriteobj.saved=true;
+    this._service.postfavouriteAdvertisement(this.favouriteobj,this._service.userId,advertisementid).subscribe(
+      data=>{
+        console.log("advertisement added favourites successfully")
+        this.fetchUserData()
+      },
+      error=>{
+        console.log("error occured while adding advertisement added favourites")
+      }
+    )
+  }
+ 
   follower(advertiserid: number){
     this.followerobj.userid=this.userId;
     this.followerobj.advertiserid=advertiserid;
@@ -138,7 +215,7 @@ export class HomepageComponent implements OnInit {
     this._service.FollowerFromRemote(this.followerobj,advertiserid,+this.userId).subscribe(
       data=>{
         console.log("follower updated");
-        this.fetchfollowers()
+        this.fetchUserData()
         this._router.navigate(['homepage'])
       },
       error=>{
@@ -210,7 +287,10 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  
+  profile(advertiserid:Number){
+    this._router.navigate(['profile',this._service.userId])
+  }
+
 
 
 }

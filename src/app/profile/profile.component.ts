@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild, ElementRef } from '@angular/core';
 import { Profile } from '../paisa';
 import { Router } from '@angular/router';
 import { PaiService } from '../paisa.service';
 import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -15,12 +14,13 @@ export class ProfileComponent {
   userId=''
   username=''
   constructor(private _service: PaiService,private _router: Router,private _route: ActivatedRoute) {}
-  
   ngOnInit(){
+    
     this.username=this._service.userName
     this._route.params.subscribe(params => {
       const advertiserId = params['id']; 
       if (advertiserId) {
+        console.log("advertiserId from profile",advertiserId)
         this.getProfile(advertiserId)
       }
     });

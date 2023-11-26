@@ -31,7 +31,7 @@ export class ProfileupdateComponent {
       data=>{
         console.log("Response received");
         this.message="Profile updated/saved";
-        this._router.navigate(['profile'])
+        this._router.navigate(['profile',this._service.userId])
     },
       error=>{
         console.log("profile not saved");

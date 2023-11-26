@@ -18,6 +18,7 @@ export class NavbarComponent  implements OnInit{
     this.firstName=this._service.firstName;
     this.lastName=this._service.lastName;
     this.userName=this._service.userName;
+
     console.log("userid",this.userId);
     console.log("firstname",this.firstName);
     console.log("lastname",this.lastName);

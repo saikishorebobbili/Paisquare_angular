@@ -80,3 +80,21 @@ export class Like{
     userid!:String;
     visited!:boolean;
 }
+
+export class Block{
+    advertiserid!:Number;
+    userid!:String;
+    Blocked!:boolean;
+}
+
+export class Report{
+    advertisementid!:Number;
+    userid!:String;
+    reportedtext!:String;
+}
+
+export class Favourite{
+    advertisementid!:Number;
+    userid!:String;
+    saved!:boolean;
+}

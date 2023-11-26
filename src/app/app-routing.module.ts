@@ -9,6 +9,7 @@ import { LandingcontentComponent } from './landingpage/landingcontent/landingcon
 import { ContactusComponent } from './contactus/contactus.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
+import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
 
 const routes: Routes = [
   { path: 'profileupdate', component:ProfileupdateComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'block/:id', component:LandingcontentComponent},
   { path: 'reportadvertisement/:id', component:LandingcontentComponent},
   { path: 'save/:id', component:LandingcontentComponent},
+  { path: 'advertiserreport', component:AdvertiserreportsComponent},
   { path: '', component:LandingcontentComponent}
 ];
 
