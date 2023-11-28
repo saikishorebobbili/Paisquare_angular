@@ -151,13 +151,11 @@ export class HomepageComponent implements OnInit {
 
   likeobj=new Like();
   like(advertisementid:Number){
-    this.likeobj.advertisementid=advertisementid;
-    this.likeobj.userid=this.userId;
+    this.likeobj.visited=false;
     this._service.LikeFromRemote(this.likeobj,+this.userId,advertisementid).subscribe(
       data=>{
         console.log("Like recieved")
         this.fetchadvertisement()
-        this._router.navigate(['homepage'])
       },
       error=>{
         console.log("like error occured")
@@ -166,7 +164,6 @@ export class HomepageComponent implements OnInit {
   }
   visited(advertisementid:Number,advertisementurl:String){
     this.visitobj.userid=this.userId;
-    this.visitobj.advertisementid=advertisementid;
     this.visitobj.visited=true;
     this._service.VisitedFromRemote(this.visitobj,+this.userId,advertisementid).subscribe(
       data=>{
@@ -194,9 +191,7 @@ export class HomepageComponent implements OnInit {
     )
   }
   favourite(advertisementid: number){
-    this.favouriteobj.userid=this._service.userId;
-    this.favouriteobj.advertisementid=advertisementid;
-    this.favouriteobj.saved=true;
+    this.favouriteobj.favourite=true;
     this._service.postfavouriteAdvertisement(this.favouriteobj,this._service.userId,advertisementid).subscribe(
       data=>{
         console.log("advertisement added favourites successfully")
@@ -209,14 +204,12 @@ export class HomepageComponent implements OnInit {
   }
  
   follower(advertiserid: number){
-    this.followerobj.userid=this.userId;
-    this.followerobj.advertiserid=advertiserid;
     this.followerobj.following=true;
     this._service.FollowerFromRemote(this.followerobj,advertiserid,+this.userId).subscribe(
       data=>{
         console.log("follower updated");
         this.fetchUserData()
-        this._router.navigate(['homepage'])
+        //this._router.navigate(['homepage'])
       },
       error=>{
         console.log("error occured for following");
@@ -232,7 +225,7 @@ export class HomepageComponent implements OnInit {
       data=>{
       console.log("Response received");
       this.fetchadvertisement()
-      this._router.navigate(['homepage'])
+      //this._router.navigate(['homepage'])
     },
       error=>{console.log("Error occured");
     }

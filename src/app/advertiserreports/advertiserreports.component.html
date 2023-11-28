@@ -5,20 +5,20 @@
     <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
-                <h2>Likes</h2>
+                <h2>Visitor graphs</h2>
             </div>
             <div class="card-body">
-                <p-chart type="line" [data]="data" [options]="options"></p-chart>
+                <p-chart type="line" [data]="visitors" [options]="options"></p-chart>
             </div>
         </div>
     </div><br>
     <div class="col-sm-6 ">
         <div class="card">
             <div class="card-header">
-                <h2>Followers</h2>
+                <h2>Followers Graph</h2>
             </div>
             <div class="card-body">
-                <p-chart type="line" [data]="data" [options]="options"></p-chart>
+                <p-chart type="line" [data]="followers" [options]="options"></p-chart>
             </div>
         </div>
     </div>
@@ -27,20 +27,20 @@
     <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
-                <h2>Visits</h2>
+                <h2>Likes Graph</h2>
             </div>
             <div class="card-body">
-                <p-chart type="line" [data]="data" [options]="options"></p-chart>
+                <p-chart type="line" [data]="likes" [options]="options"></p-chart>
             </div>
         </div>
     </div><br>
     <div class="col-sm-6">
         <div class="card">
             <div class="card-header">
-                <h2>Saves</h2>
+                <h2>added to favourites</h2>
             </div>
             <div class="card-body">
-                <p-chart type="line" [data]="data" [options]="options"></p-chart>
+                <p-chart type="line" [data]="favourite" [options]="options"></p-chart>
             </div>
         </div>
     </div>

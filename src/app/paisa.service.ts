@@ -71,5 +71,17 @@ export class PaiService {
   public postfavouriteAdvertisement(favourite:Favourite,userid:Number,advertisementid:Number){
     return this._http.post<any>(`http://localhost:3300/${userid}/${advertisementid}/addAdvetisementToFavourite`,favourite);
   }
+  public getVisitorGraphFromRemote(userId:Number){
+    return this._http.get<any>(`http://localhost:3300/${userId}/visitorgraph`);
+  }
+  public getFollowersGraphFromRemote(userId:Number){
+    return this._http.get<any>(`http://localhost:3300/${userId}/followersgraph`);
+  }
+  public getLikeGraphFromRemote(userId:Number){
+    return this._http.get<any>(`http://localhost:3300/${userId}/likesgraph`);
+  }
+  public getFavouriteGraphFromRemote(userId:Number){
+    return this._http.get<any>(`http://localhost:3300/${userId}/favouritegraph`);
+  }
 }
 
