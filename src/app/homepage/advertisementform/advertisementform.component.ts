@@ -22,7 +22,7 @@ export class AdvertisementformComponent {
   advertisementForm(){
     this._service.advertiseFromRemote(this.advertise,this._service.userId).subscribe(
       data=>{console.log("Response received");
-      this._router.navigate(['homepage'])
+      this._router.navigate(['alladvertisements'])
     },
       error=>{console.log(this.advertise);
         console.log("not saved");

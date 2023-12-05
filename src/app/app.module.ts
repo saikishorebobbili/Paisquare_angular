@@ -22,6 +22,8 @@ import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
 import { ChartModule } from 'primeng/chart';
+import { UseractivitiesComponent } from './homepage/useractivities/useractivities.component';
+import { AlladvertisementsComponent } from './homepage/alladvertisements/alladvertisements.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +39,9 @@ import { ChartModule } from 'primeng/chart';
     LandingcontentComponent,
     ProfileupdateComponent,
     ProfileComponent,
-    AdvertiserreportsComponent
+    AdvertiserreportsComponent,
+    UseractivitiesComponent,
+    AlladvertisementsComponent
   ],
   imports: [
     BrowserModule,

@@ -10,21 +10,23 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
 import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
-
+import { UseractivitiesComponent } from './homepage/useractivities/useractivities.component';
+import { AlladvertisementsComponent } from './homepage/alladvertisements/alladvertisements.component';
 const routes: Routes = [
   { path: 'profileupdate', component:ProfileupdateComponent},
   { path: 'login', component:LoginComponent },
   { path: 'advertisementform', component:AdvertisementformComponent},
   { path: 'createaccount', component:RegistrationComponent },
-  { path: 'homepage', component:HomepageComponent },
+  { path: 'alladvertisements', component:AlladvertisementsComponent },
   { path: 'contactus',component:ContactusComponent},
-  { path: 'advertisement/:id', component: HomepageComponent }, 
-  { path: 'myadvertisement/:userId', component: HomepageComponent },
+  { path: 'advertisement/:id', component: AlladvertisementsComponent }, 
+  { path: 'myadvertisement/:userId', component: AlladvertisementsComponent },
   { path: 'profile/:id', component:ProfileComponent},
   { path: 'block/:id', component:LandingcontentComponent},
   { path: 'reportadvertisement/:id', component:LandingcontentComponent},
   { path: 'save/:id', component:LandingcontentComponent},
   { path: 'advertiserreport', component:AdvertiserreportsComponent},
+  { path: 'useractivities', component:UseractivitiesComponent},
   { path: '', component:LandingcontentComponent}
 ];
 

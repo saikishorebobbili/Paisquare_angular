@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<br><br><br>
+
+<div class="col-12 col-sm-8 col-bg-8 offset-sm-2">
+    <div class="container">
+        <app-homepage *ngFor="let ads of advertisements" [ad]="ads" (fetchData)="fetchadvertisement()"></app-homepage>
+    </div>
+</div>
+<br><br><br><br>
+ 

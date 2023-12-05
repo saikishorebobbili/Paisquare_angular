@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<br><br><br>
+<p>useractivities works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">Following advertisements</div>
+                <div class="card-body">
+                    <app-homepage *ngFor="let ad of followingAdvertisementsList" [ad]="ad" (fetchData)="followingAdvertisements()"></app-homepage>
+                </div>
+            </div><br><br>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">favourites advertisements</div>
+                <div class="card-body">
+                    <app-homepage *ngFor="let ad of favouriteAdvetisementsList" [ad]="ad" (fetchData)="favouriteAdvertisements()"></app-homepage>
+                </div>
+            </div>
+        </div>
+    </div><br><br>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">Liked advertisements</div>
+                <div class="card-body">
+                    <app-homepage *ngFor="let ad of likedAdvetisementsList" [ad]="ad" (fetchData)="likedAdvertisements()"></app-homepage>
+                </div>
+            </div><br><br>
+        </div>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-header">Visited advertisements</div>
+                <div class="card-body">
+                    <app-homepage *ngFor="let ad of visitedAdvertisementsList" [ad]="ad" (fetchData)="visitedAdvertisements()"></app-homepage>
+                </div>
+            </div>
+        </div>
+</div>
+<br><br><br><br>

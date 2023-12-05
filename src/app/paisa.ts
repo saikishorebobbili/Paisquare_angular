@@ -96,5 +96,4 @@ export class Report{
 export class Favourite{
     advertisementid!:Number;
     userid!:String;
-    favourite!:boolean;
 }

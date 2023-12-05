@@ -35,7 +35,6 @@ export class PaiService {
     return this._http.get<any>("http://localhost:3300/commentslist");
   }
   public getUserdata(userId:Number){
-    console.log("from service log__",userId)
     return this._http.get<any>(`http://localhost:3300/${userId}/userdata`);
   }
   public CommentsListFromRemote(advertisementid: Number){
@@ -71,6 +70,7 @@ export class PaiService {
   public postfavouriteAdvertisement(favourite:Favourite,userid:Number,advertisementid:Number){
     return this._http.post<any>(`http://localhost:3300/${userid}/${advertisementid}/addAdvetisementToFavourite`,favourite);
   }
+  //Data for graphs
   public getVisitorGraphFromRemote(userId:Number){
     return this._http.get<any>(`http://localhost:3300/${userId}/visitorgraph`);
   }
@@ -82,6 +82,19 @@ export class PaiService {
   }
   public getFavouriteGraphFromRemote(userId:Number){
     return this._http.get<any>(`http://localhost:3300/${userId}/favouritegraph`);
+  }
+  //------------------
+  public getFavouriteAdvertisements(){
+    return this._http.get<any>(`http://localhost:3300/${this.userId}/getfavouriteadvertisementslist`);
+  }
+  public getLikedAdvertisements(){
+    return this._http.get<any>(`http://localhost:3300/${this.userId}/getlikedadvertisementslist`);
+  }
+  public getFollowingAdvertisements(){
+    return this._http.get<any>(`http://localhost:3300/${this.userId}/getfollowingadvertisementslist`);
+  }
+  public getVisitedAdvertisements(){
+    return this._http.get<any>(`http://localhost:3300/${this.userId}/getvisitedadvertisementslist`);
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input, ChangeDetectorRef,EventEmitter, Output } from '@angular/core';
 import { PaiService } from '../../paisa.service';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Comments,Follower,Visited,Like, Block, Report,Favourite } from '../../p
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  @Input() ad: any;
   options = [
     { id: 'radio1', label: 'Violent', value: 'violent' },
     { id: 'radio2', label: 'Hateful', value: 'Hateful' },
@@ -18,7 +19,7 @@ export class HomepageComponent implements OnInit {
     { id: 'radio4', label: 'harmful', value: 'harmful' },
     { id: 'radio5', label: 'Misinformation', value: 'Misinformation' },
     { id: 'radio6', label: 'Child Abuse', value: 'Child Abuse' },
-    { id: 'radio7', label: 'Spam/ Misleading', value: 'Spam/ Misleading' }
+    { id: 'radio7', label: 'Spam/ Misleading', value: 'Spam/Misleading' }
   ];
   advertisements: any[] = [];
   advertisementsListById: any[] = [];
@@ -27,7 +28,6 @@ export class HomepageComponent implements OnInit {
   followerslist: any[] = [];
   userData: any[] = [];
   blockedlist: any[]=[];
-  favouriteslist: any[]=[];
   commentobj= new Comments();
   followerobj= new Follower();
   visitobj=new Visited();
@@ -38,7 +38,7 @@ export class HomepageComponent implements OnInit {
   currentOpenId: any;
   following:any;
   advertisementid:any=0;
-  constructor(private _service: PaiService,private http: HttpClient,private _router: Router,private _route: ActivatedRoute) {
+  constructor(private cdr: ChangeDetectorRef,private _service: PaiService,private http: HttpClient,private _router: Router,private _route: ActivatedRoute) {
        
   }
   userId=' ';
@@ -47,6 +47,7 @@ export class HomepageComponent implements OnInit {
   showDialog() {
     this.displayDialog = true;
   }
+  @Output() fetchData = new EventEmitter<void>();
   ngOnInit(){
     this._route.params.subscribe(params => {
       const adId = params['id']; // Access ad ID from URL if provided
@@ -58,7 +59,6 @@ export class HomepageComponent implements OnInit {
           data => {
             this.userId=this._service.userId;
             this.advertisements = data;
-            console.log("advertisment list for id: ",adId,this.advertisements)
           },
             error=>{console.log("error occure while retrieving the data for ID -",adId)
         });
@@ -68,7 +68,7 @@ export class HomepageComponent implements OnInit {
           data => {
             this.userId=this._service.userId;
             this.advertisements = data;
-            console.log("advertisment list for userId: ",adId,this.advertisements)
+            console.log("=============advertisement data===================",data)
           },
             error=>{console.log("error occure while retrieving the data for userId -",userId)
         });
@@ -82,19 +82,11 @@ export class HomepageComponent implements OnInit {
   fetchUserData(){
     this._service.getUserdata(+this.userId).subscribe(
       data =>{
-        console.log("console.log(this._service.userId)",this.userId)
         this.userData=data;
-        console.log("fromfollower--->",data,"------->",this.followerslist);
+        console.log("=============user data",data)
         data.forEach((user: any) => {
           this.followerslist=user.following;
           this.blockedlist=user.blocked;
-          this.favouriteslist=user.favourites;
-          console.log("user data from fetch user data-->")
-          console.log("user data from fetch user data-(data->",user);
-          console.log("followerslist",this.followerslist)
-          console.log("blockedlist",this.blockedlist)
-          console.log("favouriteslist",this.favouriteslist)
-          // Perform operations with follower.username or other properties here
         });
       },
       error=>{
@@ -103,15 +95,14 @@ export class HomepageComponent implements OnInit {
     );
   }
   fetchadvertisement(){
-    this.advertisementid=0;
     this._service.getAllAdvertisements().subscribe(
       data => {
-      this.userId=this._service.userId;
-      console.log("all advertisment list:",data)
-      this.advertisements = data;
-      console.log("all advertisment list:",this.advertisements)
-    },
-      error=>{console.log("error occure while retrieving the data!")
+        this.userId=this._service.userId;
+        this.advertisements = data;
+        console.log("=============advertisement data",data)
+        this.cdr.detectChanges();
+      },
+      error=>{console.log("error occur while retrieving the data!")
     });
   }
 
@@ -155,6 +146,8 @@ export class HomepageComponent implements OnInit {
     this._service.LikeFromRemote(this.likeobj,+this.userId,advertisementid).subscribe(
       data=>{
         console.log("Like recieved")
+        console.log("fetching user data");
+        this.fetchData.emit();
         this.fetchadvertisement()
       },
       error=>{
@@ -168,8 +161,8 @@ export class HomepageComponent implements OnInit {
     this._service.VisitedFromRemote(this.visitobj,+this.userId,advertisementid).subscribe(
       data=>{
         console.log("visited received")
-        this.fetchadvertisement()
-        this._router.navigate(['homepage'])
+        this.fetchData.emit();
+        this._router.navigate(['alladvertisements'])
       },
       error=>{
         console.log("visited error occured")
@@ -191,11 +184,10 @@ export class HomepageComponent implements OnInit {
     )
   }
   favourite(advertisementid: number){
-    this.favouriteobj.favourite=true;
     this._service.postfavouriteAdvertisement(this.favouriteobj,this._service.userId,advertisementid).subscribe(
       data=>{
         console.log("advertisement added favourites successfully")
-        this.fetchUserData()
+        this.fetchData.emit();
       },
       error=>{
         console.log("error occured while adding advertisement added favourites")
@@ -208,6 +200,7 @@ export class HomepageComponent implements OnInit {
     this._service.FollowerFromRemote(this.followerobj,advertiserid,+this.userId).subscribe(
       data=>{
         console.log("follower updated");
+        console.log("fetching user data");
         this.fetchUserData()
         //this._router.navigate(['homepage'])
       },
@@ -224,7 +217,7 @@ export class HomepageComponent implements OnInit {
     this._service.CommentsFromRemote(this.commentobj,val,+this.userId).subscribe(
       data=>{
       console.log("Response received");
-      this.fetchadvertisement()
+      this.fetchData.emit();
       //this._router.navigate(['homepage'])
     },
       error=>{console.log("Error occured");
@@ -242,7 +235,7 @@ export class HomepageComponent implements OnInit {
       data=>{
         this.comments=data;
         console.log("Response received------------>",this.comments);
-      this._router.navigate(['homepage'])
+      this._router.navigate(['alladvertisements'])
     },
       error=>{console.log("Error occured");
     }
