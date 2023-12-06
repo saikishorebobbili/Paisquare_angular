@@ -49,8 +49,7 @@ export class UseractivitiesComponent implements OnInit{
   followingAdvertisements(){
     this._service.getFollowingAdvertisements().subscribe(
       data => {
-        //this.followingAdvertisementsList = data;
-        console.log("following list",data)
+        this.followingAdvertisementsList = data;
     },
       error=>{console.log("error occure while retrieving the data!")
     });
