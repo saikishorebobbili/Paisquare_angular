@@ -71,17 +71,17 @@ export class PaiService {
     return this._http.post<any>(`http://localhost:3300/${userid}/${advertisementid}/addAdvetisementToFavourite`,favourite);
   }
   //Data for graphs
-  public getVisitorGraphFromRemote(userId:Number){
-    return this._http.get<any>(`http://localhost:3300/${userId}/visitorgraph`);
+  public getVisitorGraphFromRemote(userId:Number,reportperiod:String){
+    return this._http.get<any>(`http://localhost:3300/${userId}/${reportperiod}/visitorgraph`);
   }
-  public getFollowersGraphFromRemote(userId:Number){
-    return this._http.get<any>(`http://localhost:3300/${userId}/followersgraph`);
+  public getFollowersGraphFromRemote(userId:Number,reportperiod:String){
+    return this._http.get<any>(`http://localhost:3300/${userId}/${reportperiod}/followersgraph`);
   }
-  public getLikeGraphFromRemote(userId:Number){
-    return this._http.get<any>(`http://localhost:3300/${userId}/likesgraph`);
+  public getLikeGraphFromRemote(userId:Number,reportperiod:String){
+    return this._http.get<any>(`http://localhost:3300/${userId}/${reportperiod}/likesgraph`);
   }
-  public getFavouriteGraphFromRemote(userId:Number){
-    return this._http.get<any>(`http://localhost:3300/${userId}/favouritegraph`);
+  public getFavouriteGraphFromRemote(userId:Number,reportperiod:String){
+    return this._http.get<any>(`http://localhost:3300/${userId}/${reportperiod}/favouritegraph`);
   }
   //------------------
   public getFavouriteAdvertisements(){

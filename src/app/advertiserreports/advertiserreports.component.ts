@@ -26,16 +26,74 @@ followersLabels:any[]=[];
 followersData:any[]=[];
 favouriteLabels:any[]=[];
 favouriteData:any[]=[];
+documentStyle = getComputedStyle(document.documentElement);
+textColor = this.documentStyle.getPropertyValue('--text-color');
+textColorSecondary =  this.documentStyle.getPropertyValue('--text-color-secondary');
+surfaceBorder =  this.documentStyle.getPropertyValue('--surface-border');
+noDataFavourite:Boolean=false;
+noDataLikes:Boolean=false;
+noDataFollowers:Boolean=false;
+noDataVisitors:Boolean=false;
 ngOnInit() {
-    this._service.getFavouriteGraphFromRemote(this._service.userId).subscribe(
+    this.getFavouriteGraphFromRemote('weekly')
+    this.getLikeGraphFromRemote('weekly')
+    this.getVisitorGraphFromRemote('weekly')
+    this.getFollowersGraphFromRemote('weekly')
+    
+    this.options = {
+        maintainAspectRatio: false,
+        aspectRatio: 0.6,
+        plugins: {
+            legend: {
+                labels: {
+                    color:  this.textColor
+                }
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color:  this.textColorSecondary
+                },
+                grid: {
+                    color:  this.surfaceBorder,
+                    drawBorder: false
+                }
+            },
+            y: {
+                ticks: {
+                    color:  this.textColorSecondary
+                },
+                grid: {
+                    color:  this.surfaceBorder,
+                    drawBorder: false
+                }
+            }
+        }
+    };
+}
+selectedtype(period:String){
+    this.getFavouriteGraphFromRemote(period)
+    this.getLikeGraphFromRemote(period)
+    this.getVisitorGraphFromRemote(period)
+    this.getFollowersGraphFromRemote(period)
+}
+getFavouriteGraphFromRemote(period:any){
+    this._service.getFavouriteGraphFromRemote(this._service.userId,period).subscribe(
         data=>{
-            console.log("Favourite data",data);
-            data.forEach((obj: any) => {
-                this.favouriteLabels.push(obj[0])
-                this.favouriteData.push(obj[1])
-              });
-            console.log(this.favouriteLabels)
-            console.log(this.favouriteData)
+            this.favouriteLabels=[]
+            this.favouriteData=[]
+            data.length
+            if(data.length==0){
+                this.noDataFavourite=true
+            }
+            else{
+                data.forEach((obj: any) => {
+                    this.favouriteLabels.push(obj[0])
+                    this.favouriteData.push(obj[1])
+                  });
+            }
+            
             this.favourite = {
                 labels: this.favouriteLabels,
                 datasets: [
@@ -43,7 +101,7 @@ ngOnInit() {
                         label: 'favourite',
                         data: this.favouriteData,
                         fill: false,
-                        borderColor: documentStyle.getPropertyValue('--blue-500'),
+                        borderColor:  this.documentStyle.getPropertyValue('--blue-500'),
                         tension: 0.4
                     }
                 ]
@@ -53,15 +111,21 @@ ngOnInit() {
         error=>{
             console.log("likes graph from error occured!");
         });
-    this._service.getLikeGraphFromRemote(this._service.userId).subscribe(
+}
+getLikeGraphFromRemote(period:any){
+    this._service.getLikeGraphFromRemote(this._service.userId,period).subscribe(
         data=>{
-            console.log("like data",data);
-            data.forEach((obj: any) => {
-                this.likesLabels.push(obj[0])
-                this.likesData.push(obj[1])
-              });
-            console.log(this.likesLabels)
-            console.log(this.likesData)
+            this.likesData=[]
+            this.likesLabels=[]
+            if(data.length==0){
+                this.noDataLikes=true
+            }
+            else{
+                data.forEach((obj: any) => {
+                    this.likesLabels.push(obj[0])
+                    this.likesData.push(obj[1])
+                });
+            }
             this.likes= {
                 labels: this.likesLabels,
                 datasets: [
@@ -69,7 +133,7 @@ ngOnInit() {
                         label: 'Likes',
                         data: this.likesData,
                         fill: false,
-                        borderColor: documentStyle.getPropertyValue('--blue-500'),
+                        borderColor:  this.documentStyle.getPropertyValue('--blue-500'),
                         tension: 0.4
                     }
                 ]
@@ -79,15 +143,22 @@ ngOnInit() {
         error=>{
             console.log("likes graph from error occured!");
         });
-    this._service.getVisitorGraphFromRemote(this._service.userId).subscribe(
+}
+getVisitorGraphFromRemote(period:any){
+    this._service.getVisitorGraphFromRemote(this._service.userId,period).subscribe(
         data=>{
-            console.log("visitor data",data);
-            data.forEach((obj: any) => {
-                this.VisitorsLabels.push(obj[0])
-                this.VisitorsData.push(obj[1])
-              });
-            console.log(this.VisitorsLabels)
-            console.log(this.VisitorsData)
+            console.log("---------->visitor",data)
+            this.VisitorsLabels=[]
+            this.VisitorsData=[]
+            if(data.length==0){
+                this.noDataVisitors=true
+            }
+            else{
+                data.forEach((obj: any) => {
+                    this.VisitorsLabels.push(obj[0])
+                    this.VisitorsData.push(obj[1])
+                });
+            }
             this.visitors = {
                 labels: this.VisitorsLabels,
                 datasets: [
@@ -95,7 +166,7 @@ ngOnInit() {
                         label: 'Visitors',
                         data: this.VisitorsData,
                         fill: false,
-                        borderColor: documentStyle.getPropertyValue('--blue-500'),
+                        borderColor:  this.documentStyle.getPropertyValue('--blue-500'),
                         tension: 0.4
                     }
                 ]
@@ -105,14 +176,22 @@ ngOnInit() {
         error=>{
             console.log("visitor graph from error occured!");
         });
-
-    this._service.getFollowersGraphFromRemote(this._service.userId).subscribe(
+}
+getFollowersGraphFromRemote(period:any){
+    this._service.getFollowersGraphFromRemote(this._service.userId,period).subscribe(
         data=>{
-            console.log("followers data",data);
-            data.forEach((obj: any) => {
-                this.followersLabels.push(obj[0])
-                this.followersData.push(obj[1])
-                });
+            this.followersLabels=[]
+            this.followersData=[]
+            if(data.length==0){
+                this.noDataFollowers=true
+            }
+            else{
+                console.log("followers data------>",data);
+                data.forEach((obj: any) => {
+                    this.followersLabels.push(obj[0])
+                    this.followersData.push(obj[1])
+                    });
+            }
             console.log(this.followersLabels)
             console.log(this.followersData)
             this.followers = {
@@ -122,54 +201,15 @@ ngOnInit() {
                         label: 'Followers',
                         data: this.followersData,
                         fill: false,
-                        borderColor: documentStyle.getPropertyValue('--blue-500'),
+                        borderColor:  this.documentStyle.getPropertyValue('--blue-500'),
                         tension: 0.4
                     }
                 ]
             };
         },
         error=>{
-            console.log("visitor graph from error occured!");
+            console.log("Follower graph from error occured!");
         }
         );
-    
-
-    const documentStyle = getComputedStyle(document.documentElement);
-    const textColor = documentStyle.getPropertyValue('--text-color');
-    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
-
-    this.options = {
-        maintainAspectRatio: false,
-        aspectRatio: 0.6,
-        plugins: {
-            legend: {
-                labels: {
-                    color: textColor
-                }
-            }
-        },
-        scales: {
-            x: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
-                }
-            },
-            y: {
-                ticks: {
-                    color: textColorSecondary
-                },
-                grid: {
-                    color: surfaceBorder,
-                    drawBorder: false
-                }
-            }
-        }
-    };
-    
 }
 }
