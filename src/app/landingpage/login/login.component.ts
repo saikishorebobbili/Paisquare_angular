@@ -16,7 +16,8 @@ export class LoginComponent {
   userLogin(){
     if(this.user.email!='' && this.user.password!=''){
       this._service.loginUserFromRemote(this.user).subscribe(
-        data=>{console.log("Response received");
+        data=>{
+        console.log("Response received");
         this._service.userId=data.id;
         this._service.firstName=data.firstname;
         this._service.lastName=data.lastname;

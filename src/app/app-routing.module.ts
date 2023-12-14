@@ -12,6 +12,7 @@ import { ProfileupdateComponent } from './profileupdate/profileupdate.component'
 import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
 import { UseractivitiesComponent } from './homepage/useractivities/useractivities.component';
 import { AlladvertisementsComponent } from './homepage/alladvertisements/alladvertisements.component';
+import { AdvertiserdashboardComponent } from './advertiserdashboard/advertiserdashboard.component';
 const routes: Routes = [
   { path: 'profileupdate', component:ProfileupdateComponent},
   { path: 'login', component:LoginComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'save/:id', component:LandingcontentComponent},
   { path: 'advertiserreport', component:AdvertiserreportsComponent},
   { path: 'useractivities', component:UseractivitiesComponent},
+  {path: 'advertiserdashboard',component:AdvertiserdashboardComponent},
   { path: '', component:LandingcontentComponent}
 ];
 

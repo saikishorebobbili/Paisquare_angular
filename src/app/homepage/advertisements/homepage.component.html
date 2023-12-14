@@ -34,6 +34,11 @@
                                         <h4>{{ ad.favourites.includes(userId) ? 'Remove from favourites' : 'Add to favourites' }}</h4>
                                     </button><br>
                                 </li>
+                                <li>
+                                    <button class="btn btn-primary dropdown-item" style="color: black;" (click)="editAdvertisement(ad.id)">
+                                        <h4>{{ ad.id==userId ? 'Edit' : 'Just visit' }}</h4>
+                                    </button><br>
+                                </li>
                             </ul>
                         </div>
                     </div>

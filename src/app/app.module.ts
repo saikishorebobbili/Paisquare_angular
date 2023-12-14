@@ -24,6 +24,8 @@ import { AdvertiserreportsComponent } from './advertiserreports/advertiserreport
 import { ChartModule } from 'primeng/chart';
 import { UseractivitiesComponent } from './homepage/useractivities/useractivities.component';
 import { AlladvertisementsComponent } from './homepage/alladvertisements/alladvertisements.component';
+import { AdvertiserdashboardComponent } from './advertiserdashboard/advertiserdashboard.component';
+import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { AlladvertisementsComponent } from './homepage/alladvertisements/alladve
     ProfileComponent,
     AdvertiserreportsComponent,
     UseractivitiesComponent,
-    AlladvertisementsComponent
+    AlladvertisementsComponent,
+    AdvertiserdashboardComponent,
+    UserdashboardComponent
   ],
   imports: [
     BrowserModule,

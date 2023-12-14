@@ -277,6 +277,8 @@ export class HomepageComponent implements OnInit {
     this._router.navigate(['profile',this._service.userId])
   }
 
+  editAdvertisement(advertisementid:Number){
 
+  }
 
 }

@@ -96,5 +96,8 @@ export class PaiService {
   public getVisitedAdvertisements(){
     return this._http.get<any>(`http://localhost:3300/${this.userId}/getvisitedadvertisementslist`);
   }
+  public getAdvertisementTransactionData(){
+    return this._http.get<any>(`http://localhost:3300/${this.userId}/getadvertisementtransactiondata`);
+  }
 }
 

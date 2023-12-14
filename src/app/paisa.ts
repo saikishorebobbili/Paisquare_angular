@@ -19,6 +19,7 @@ export class Advertise{
     country!:String;
     state!:String;
     district!:String;
+    hashtags!:String;
     constructor(){}
 }
 export class Contactus{

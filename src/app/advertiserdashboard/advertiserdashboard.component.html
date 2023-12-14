@@ -1,0 +1,104 @@
+<app-navbar></app-navbar>
+<br><br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-bg-6">
+            <div class="card">
+                <div class="card-header bg-primary" >
+                    <div class="container">
+                        <h3>Balance</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row container">
+                        <div class="col-4">
+                            <h5 >Money</h5>
+                        </div>
+                        <div class="col-8">
+                            <label title="Money" class="form-control">{{money}}</label>
+                        </div>
+                    </div><br>
+                    <div class="row container">
+                        <div class="col-4">                    
+                            <h5 >Pai's</h5>
+                        </div>
+                        <div class="col-8">
+                            <label title="Pai" class="form-control">{{pai}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="col-12 col-sm-6 col-bg-6">
+            <br>
+            <div class="card">
+                <form action="{% url 'pay' user.username %}" method="POST">
+                    <div class="container">
+                        <div class="form-group row row-content">
+                            <br><br>
+                            <div class="col col-8"><br>
+                                <input type="number" class="form-control" placeholder="Enter amount to add in $" id="amount" name="amount" required>
+                            </div>
+                            <div class="col col-8"><br>
+                                <input type="number" class="form-control" placeholder="Enter number of silver coin to add " id="silver" name="silver" required>
+                                
+                            </div>
+                            <div style="text-align: center;">
+                                <input type="submit" class="btn btn-primary" value="Pay">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            <br><br><br>
+        </div><br><br><br>
+    </div>
+</div>
+<div class="container" >
+    <div class="card">
+        <div class="card-header bg-primary">
+            <h2>All Advertisement transaction details</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Pai</th>
+                      <th>Pai's per click</th>
+                      <th>Paisa</th>
+                      <th>Paisa per click</th>
+                      <th>available Pai's</th>
+                      <th>available paisa</th>
+                      <th>likes count</th>
+                      <th>comments count</th>
+                      <th>visit count</th>
+                      <th>Status</th>
+                      <th>Created on</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let ad of advertisement">
+                  <tr>
+                      <td>{{ad.id}}</td>
+                      <td>{{ad.pai}}</td>
+                      <td>{{ad.paiperclick}}</td>
+                      <td>{{ad.paisa}}</td>
+                      <td>{{ad.paisaperclick}}</td>
+                      <td>{{ad.availablepai}}</td>
+                      <td>{{ad.availablepaisa}}</td>
+                      <td>{{ad.likescount}}</td>
+                      <td>{{ad.commentscount}}</td>
+                      <td>{{ad.visitscount}}</td>
+                      <td>{{ ad.availablepai>=0 ? 'Active':'Compeleted'}}</td>
+                      <td>{{ad.opendate | date}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    
+  </div>
+
+<br><br><br><br>
