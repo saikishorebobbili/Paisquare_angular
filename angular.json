@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pai_square:build:production"
+              "buildTarget": "pai_square:build:production"
             },
             "development": {
-              "browserTarget": "pai_square:build:development"
+              "buildTarget": "pai_square:build:development"
             }
           },
           "defaultConfiguration": "development"
