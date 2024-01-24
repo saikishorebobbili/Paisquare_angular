@@ -1,6 +1,9 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnInit, ViewChild } from '@angular/core';
 import { PaiService} from '../paisa.service';
 import { Router } from '@angular/router';
+import { Sidebar } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent  implements OnInit{
+  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
+
+    closeCallback(e:Event): void {
+        this.sidebarRef.close(e);
+    }
+
+    sidebarVisible: boolean = false;
+  sidebarVisible1:boolean=true;
   userId=' ';
   firstName=' ';
   lastName=' ';

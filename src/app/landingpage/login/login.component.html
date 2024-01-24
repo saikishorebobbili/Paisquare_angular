@@ -1,6 +1,5 @@
 <app-landingnavbar></app-landingnavbar>
 
-
     <br><br><br>
     <div class="col-md-5 offset-md-3">
         <div class="card ">
@@ -9,6 +8,7 @@
                 <div class="row row content">
                     <form #loginform="ngForm" (ngSubmit)="userLogin()">
                         <h3 class="text-danger">{{message}}</h3>
+                        
                         <h3>{{user.id}}</h3>
                         <div class="form-group container row row-content">
                             <label class="col-12 col-sm-5 col-md-5 form-group-label" placeholder="Enter username">Email</label>

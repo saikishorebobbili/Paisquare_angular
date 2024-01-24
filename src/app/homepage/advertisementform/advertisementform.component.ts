@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PaiService } from '../../paisa.service';
 import { Router } from '@angular/router';
 import { Advertise } from '../../paisa';
-
 @Component({
   selector: 'app-advertisementform',
   templateUrl: './advertisementform.component.html',
@@ -12,8 +11,13 @@ export class AdvertisementformComponent implements OnInit{
   advertise= new Advertise();
   paiChecked: boolean = false;
   paisaChecked: boolean = false;
+  editorConfig = {
+    // Configuration options
+  };
+  editorContent="Hi"
   message=''
   text="www";
+  value='wwwwwwwwwwwwwwwwwwwwwww'
   public editorData: string = '';
   constructor(private _service: PaiService, private _router: Router){};
   onEditorChange(event: any) {

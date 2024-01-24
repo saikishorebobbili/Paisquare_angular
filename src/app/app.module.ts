@@ -16,9 +16,6 @@ import { LandingnavbarComponent } from './landingpage/landingnavbar/landingnavba
 import { LandingcontentComponent } from './landingpage/landingcontent/landingcontent.component';
 import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
 import { ProfileComponent } from './profile/profile.component';
-import { EditorModule } from 'primeng/editor';
-import { CheckboxModule } from 'primeng/checkbox';
-import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
 import { ChartModule } from 'primeng/chart';
@@ -26,6 +23,17 @@ import { UseractivitiesComponent } from './homepage/useractivities/useractivitie
 import { AlladvertisementsComponent } from './homepage/alladvertisements/alladvertisements.component';
 import { AdvertiserdashboardComponent } from './advertiserdashboard/advertiserdashboard.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { TermsandConditionsComponent } from './static/termsand-conditions/termsand-conditions.component';
+import { PrivacyPolicyComponent } from './static/privacy-policy/privacy-policy.component'
+
+import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { AvatarModule } from 'primeng/avatar';
+import { EditorModule } from 'primeng/editor';
+import { RatingModule } from 'primeng/rating';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,18 +53,26 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
     UseractivitiesComponent,
     AlladvertisementsComponent,
     AdvertiserdashboardComponent,
-    UserdashboardComponent
+    UserdashboardComponent,
+    TermsandConditionsComponent,
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
     DialogModule,
     BrowserAnimationsModule,
-    EditorModule,
     FormsModule,
+    InputTextareaModule,
     CheckboxModule,
     HttpClientModule,
     AppRoutingModule,
     ChartModule,
+    SidebarModule,
+    ButtonModule,
+    AvatarModule,
+    EditorModule,
+    RatingModule,
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
