@@ -1,3 +1,9 @@
-.btn{
-    color: white;
-}
+
+  .p-tree .p-treenode-content {
+    padding-left: 0; /* Removes default padding for content */
+    text-align: left; /* Aligns content to left edge */
+  }
+  
+  .p-tree .p-treenode-icon {
+    margin-left: 5px; /* Adjusts offset for icon display */
+  }

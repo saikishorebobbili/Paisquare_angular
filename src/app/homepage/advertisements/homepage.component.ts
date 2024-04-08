@@ -68,7 +68,6 @@ export class HomepageComponent implements OnInit {
           data => {
             this.userId=this._service.userId;
             this.advertisements = data;
-            console.log("=============advertisement data===================",data)
           },
             error=>{console.log("error occure while retrieving the data for userId -",userId)
         });
@@ -83,7 +82,6 @@ export class HomepageComponent implements OnInit {
     this._service.getUserdata(+this.userId).subscribe(
       data =>{
         this.userData=data;
-        console.log("=============user data",data)
         data.forEach((user: any) => {
           this.followerslist=user.following;
           this.blockedlist=user.blocked;
@@ -99,7 +97,6 @@ export class HomepageComponent implements OnInit {
       data => {
         this.userId=this._service.userId;
         this.advertisements = data;
-        console.log("=============advertisement data",data)
         this.cdr.detectChanges();
       },
       error=>{console.log("error occur while retrieving the data!")
@@ -162,7 +159,7 @@ export class HomepageComponent implements OnInit {
       data=>{
         console.log("visited received")
         this.fetchData.emit();
-        this._router.navigate(['alladvertisements'])
+        //this._router.navigate(['alladvertisements'])
       },
       error=>{
         console.log("visited error occured")
@@ -213,10 +210,10 @@ export class HomepageComponent implements OnInit {
     this.commentobj.userid=this.userId;
     this.commentobj.advertisementid=val;
     this.commentobj.adid=val;
-    console.log("----",this.commentobj);
+    //console.log("----",this.commentobj);
     this._service.CommentsFromRemote(this.commentobj,val,+this.userId).subscribe(
       data=>{
-      console.log("Response received");
+      //console.log("Response received");
       this.fetchData.emit();
       //this._router.navigate(['homepage'])
     },
@@ -234,8 +231,7 @@ export class HomepageComponent implements OnInit {
     this._service.CommentsListFromRemote(advertisementid).subscribe(
       data=>{
         this.comments=data;
-        console.log("Response received------------>",this.comments);
-      this._router.navigate(['alladvertisements'])
+        //this._router.navigate(['alladvertisements'])
     },
       error=>{console.log("Error occured");
     }
@@ -244,14 +240,10 @@ export class HomepageComponent implements OnInit {
   Shareadvertisement(advertisementid:Number){
     this._service.getAllAdvertisements().subscribe(
       data=>{
-        console.log("advertisement by id",data)
         data.forEach((advertisement: any) => {
-          console.log("brandname brandname:", advertisement.brandname);
           const title = advertisement.brandname;
           const text = advertisement.description;
-          console.log("data.brandname",advertisement.description)
           const url = advertisement.url;
-          console.log("data.brandname",advertisement.url)
           this.share(title, text, url);
         });
       },

@@ -22,7 +22,7 @@ export class LoginComponent {
         this._service.firstName=data.firstname;
         this._service.lastName=data.lastname;
         this._service.userName=data.username;
-        this._router.navigate(['alladvertisements'])
+        this._router.navigate(['home'])
       },
         error=>{console.log("Error occured");
         this.message="Invalid email and password";

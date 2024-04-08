@@ -34,6 +34,8 @@ import { ButtonModule } from 'primeng/button';
 import { AvatarModule } from 'primeng/avatar';
 import { EditorModule } from 'primeng/editor';
 import { RatingModule } from 'primeng/rating';
+import { TreeModule } from 'primeng/tree';
+import { MenubarModule } from 'primeng/menubar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +74,9 @@ import { RatingModule } from 'primeng/rating';
     AvatarModule,
     EditorModule,
     RatingModule,
-    SidebarModule
+    SidebarModule,
+    TreeModule,
+    MenubarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

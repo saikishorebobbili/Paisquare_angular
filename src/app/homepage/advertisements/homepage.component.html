@@ -59,37 +59,27 @@
                         <tr >
                             <td style="align-items: center;" class="text-align: justify; col-2">
                                 <button (click)="like(ad.id)" id="likebotton" type="submit"  name="post_id"  style="border:none;">
-                                    <a [ngStyle]="{'color': ad.likes.includes(userId) ? 'blue' : 'black'}" style="border: none;" role="button" class="pi pi-thumbs-up " style="font-size: 2.5rem"></a>
+                                    <i [ngStyle]="{'color': ad.likes.includes(userId) ? 'blue' : 'black'}" style="border: none;" role="button" class="pi pi-thumbs-up" style="font-size: 2.5rem"></i>
                                 </button>
                             </td>
                             <td style="align-items: center; width: 20%;" class="col-2">
                                 <button (click)="follower(ad.advertiser.id)"  name="post_id" style="border: none; background: none;">
-                                <a class="btn pi pi-heart " style="font-size: 2.5rem" [ngStyle]="{'color': followerslist.includes(ad.advertiser.id) ? 'blue' : 'black'}" ></a>
+                                <i class="pi pi-heart" style="font-size: 2.5rem" [ngStyle]="{'color': followerslist.includes(ad.advertiser.id) ? 'blue' : 'black'}" ></i>
                                 
                                 </button>
                             </td>
                             <td style="align-items: center; width: 20%;" class="col-2">
                                 <a role="button" (click)="Shareadvertisement(ad.id)" data-toggle="modal" data-target="#share" class="btn btn-primary" style="border: none; background: none; color: rgb(17, 0, 255);">
                                     <i class="pi pi-share-alt " style="font-size: 2.5rem"></i></a>
-                                </td>
+                            </td>
                             <td style="align-items: center; width: 20%;" class="col-2">
-                                <a (click)="visited(ad.id,ad.url)" href="{{ad.url}}" type="submit" name="post_url"   target="_blank">
-                                    <div *ngIf="ad.visiteduser.includes(userId); else elseblock">
-                                        <i  style="border: none; background: none; color: rgb(4, 0, 255);" class="pi pi-share " style="font-size: 2.5rem"></i>
-                                    </div>
-                                    <ng-template #elseblock> 
-                                        <i class="pi pi-share " style="font-size: 2.5rem" style="border: none; background: none; color: rgb(0, 0, 0);"></i>
-                                        </ng-template>
+                                <a (click)="visited(ad.id,ad.url)" href="{{ad.url}}"  type="submit"  name="post_url" target="_blank" style="border:none;">
+                                    <i [ngStyle]="{'color': ad.visiteduser.includes(userId) ? 'blue' : 'black'}" style="border: none;" role="button" class="pi pi-link" style="font-size: 2.5rem"></i>
                                 </a>
                             </td>
-                            <td class="col-2">
-                                <a role="button"  (click)="commentlist(ad.id)" aria-expanded="false">
-                                    <div *ngIf="ad.commenteduser.includes(userId); else elseblock2">
-                                        <i class="pi pi-comments " style="font-size: 2.5rem" style="border: none; background: none; color: rgb(4, 0, 255);"></i>
-                                    </div>
-                                    <ng-template #elseblock2> 
-                                        <i  class="pi pi-comments " style="font-size: 2.5rem" style="border: none; background: none; color: rgb(0, 0, 0);"></i>
-                                    </ng-template>
+                            <td style="align-items: center; width: 20%;" class="col-2">
+                                <a (click)="commentlist(ad.id)" aria-expanded="false">
+                                    <i [ngStyle]="{'color': ad.commenteduser.includes(userId) ? 'blue' : 'black'}" style="border: none;" role="button" class="pi pi-comments" style="font-size: 2.5rem"></i>
                                 </a>
                             </td>
                         </tr>

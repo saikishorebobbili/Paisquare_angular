@@ -1,52 +1,50 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid container">
+        <button style="background-color: black;" (click)="sidebarVisible = true" class="btn"><i class="pi pi-bars" style="font-size: 2rem; color: white;"></i></button>
+       <span>
+        <a style="padding-left: 10px;" class="navbar-brand"> {{firstName}} {{lastName}}</a>
 
-<nav class="navbar navbar-dark navbar-expand-sm bg-dark fixed-top ">
-  <div class="container">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-      <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <a routerLink="/alladvertisements" style="text-decoration: none;"><h1 id="navpaisa">Paisa</h1></a>
-      <h4 style="color: rgb(96, 150, 250); margin-left: 30px;"> {{firstName}} {{lastName}}</h4>
-      <div class="collapse navbar-collapse" id="Navbar" style=" margin-right: 0px; margin-left: 300px;">
-          <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                  <div class="dropdown">
-                      <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#paisadropdown" data-toggle="dropdown" >Paisa</a>
-                      <div class="dropdown-menu" id="paisadropdown">
-                          <a class="dropdown-item" routerLink="/dashboard">Dashboard</a>
-                          <a class="dropdown-item" routerLink="/useractivities">Your activities</a>
-                          <a class="dropdown-item" routerLink="/referearn">Refer & Earn</a>
-                          <a class="dropdown-item" routerLink="/withdraw">Withdraw</a>
-                      </div>
-                  </div>
-              </li>
-              <li class="nav-item">
-                  <div class="dropdown">
-                      <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#advertiserdropdown" data-toggle="dropdown" >Advertiser</a>
-                      <div class="dropdown-menu" id="advertiserdropdown">
-                          <a class="dropdown-item" routerLink="/advertiserdashboard">Dashboard</a>
-                          <a class="dropdown-item" routerLink="/advertiserreport">Report</a>
-                          <a class="dropdown-item" [routerLink]="['/myadvertisement', userId]">My Advertisements</a>
-                          <a class="dropdown-item" routerLink="/advertisementform">Advertise</a>
-                      </div>
-                  </div>
-              </li>
-              <li class="nav-item">
-                  <div class="dropdown">
-                      <a class="nav-link dropdown btn btn-primary dropdown-toggle" role="button" data-target="#settingsdropdown" data-toggle="dropdown" >Settings</a>
-                      <div class="dropdown-menu" id="settingsdropdown">
-                          <a class="dropdown-item" [routerLink]="['/profile', userId]">Profile</a>
-                          <a class="dropdown-item" routerLink="/profileupdate">Update profile</a>
-                          <a class="dropdown-item" routerLink="/contactus">Contact Us</a>
-                          <a class="dropdown-item" routerLink="/login">Logout</a>
-                      </div>
-                  </div>
-              </li>
-          </ul>
-      </div>
-      <div class="btn-group">
-          <input type="search" class="search form-control input-group-postpend input-group" placeholder="Search" style="border-top-right-radius: 0px; border-bottom-right-radius: 0px;">
-          <button class="fa fa-search fa-lg btn btn-primary" type="button"></button>
-      </div>
-  </div>
-</nav>
+       </span> 
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+</nav><br><br>
+<div class="row">
+    <div class="col-3 fixed-left" id="sidebar" style="position: fixed; top: 0; left: 0">
+        <p-tree [value]="nodes" [style]="{'border': 'none'}">
+                <ng-template let-node pTemplate="url" [style]="{'border': 'none','background-color':'blue' }">
+                    <i (click)="componentViewMethod(node.data)" style="text-decoration: none; outline: none;" rel="noopener noreferrer" class="text-700 hover:text-primary btn" >{{ node.label }}</i>
+                </ng-template>
+                <ng-template let-node pTemplate="default">
+                    <b>{{ node.label }}</b>
+                </ng-template>
+        </p-tree>
+    </div>
+    <div class="col-8  ml-auto bg-primary" id="content" style="padding-top: 56px;">
+        <div class="container">
+            <br>
+            @if(displayadvertisementformComponent){
+                <app-advertisementform></app-advertisementform>
+            }
+            @else if(advertiserreportComponent) {
+                <app-advertiserreports></app-advertiserreports>
+            } 
+            @else if(userdashboardComponent) {
+                <app-userdashboard></app-userdashboard>
+            } 
+            @else if(useractivitiesComponent) {
+                <app-useractivities></app-useractivities>
+            } 
+            @else if(advertiserdashboardComponent) {
+                <app-advertiserdashboard></app-advertiserdashboard>
+            } 
+            @else{
+                <app-alladvertisements></app-alladvertisements>
+            }
+        </div>
+    </div>
+        
+</div>
+    
+<br><br><br><br>
