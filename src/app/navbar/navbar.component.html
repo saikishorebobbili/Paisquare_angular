@@ -23,25 +23,7 @@
     </div>
     <div class="col-8 " id="content">
         <div class="container">
-            <br>
-            @if(displayadvertisementformComponent){
-                <app-advertisementform></app-advertisementform>
-            }
-            @else if(advertiserreportComponent) {
-                <app-advertiserreports></app-advertiserreports>
-            } 
-            @else if(userdashboardComponent) {
-                <app-userdashboard></app-userdashboard>
-            } 
-            @else if(useractivitiesComponent) {
-                <app-useractivities></app-useractivities>
-            } 
-            @else if(advertiserdashboardComponent) {
-                <app-advertiserdashboard></app-advertiserdashboard>
-            } 
-            @else{
-                <app-alladvertisements></app-alladvertisements>
-            }
+            <router-outlet></router-outlet>
         </div>
     </div>
         

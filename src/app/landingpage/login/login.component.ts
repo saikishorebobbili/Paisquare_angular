@@ -22,6 +22,7 @@ export class LoginComponent {
         this._service.firstName=data.firstname;
         this._service.lastName=data.lastname;
         this._service.userName=data.username;
+        console.log("in login button page clicked")
         this._router.navigate(['home'])
       },
         error=>{console.log("Error occured");
