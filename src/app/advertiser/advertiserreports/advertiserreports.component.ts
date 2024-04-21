@@ -15,9 +15,7 @@ export class AdvertiserreportsComponent implements OnInit{
   likes:any;
   favourite:any;
   options: any;
-  constructor(private _service: PaiService,private http: HttpClient,private _router: Router) {
-       
-}
+  constructor(private _service: PaiService,private http: HttpClient,private _router: Router) {}
 VisitorsLabels:any[]=[];
 VisitorsData:any[]=[];
 likesLabels:any[]=[];
@@ -34,7 +32,17 @@ noDataFavourite:Boolean=false;
 noDataLikes:Boolean=false;
 noDataFollowers:Boolean=false;
 noDataVisitors:Boolean=false;
+period:any;
+/* Todo Get daily graph and change possion*/
+selectedPeriod:any;
 ngOnInit() {
+    this.period = [
+        { name: 'weekly', value: 'weekly' },
+        { name: 'Today', value: 'Today' },
+        { name: 'This month', value: 'thismonth' },
+        { name: 'Last month', value: 'lastmonth' },
+        { name: 'Yearly', value: 'yearly' }
+    ];
     this.getFavouriteGraphFromRemote('weekly')
     this.getLikeGraphFromRemote('weekly')
     this.getVisitorGraphFromRemote('weekly')

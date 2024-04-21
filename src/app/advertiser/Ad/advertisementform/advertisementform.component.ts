@@ -8,6 +8,8 @@ import { Advertise } from '../../../paisa';
   styleUrls: ['./advertisementform.component.css']
 })
 export class AdvertisementformComponent implements OnInit{
+  /* todo included p-clips add respective code for hastages 
+  add hashTagSeparatorExp in html*/
   advertise= new Advertise();
   paiChecked: boolean = false;
   paisaChecked: boolean = false;
@@ -19,6 +21,8 @@ export class AdvertisementformComponent implements OnInit{
   text="www";
   value='wwwwwwwwwwwwwwwwwwwwwww'
   public editorData: string = '';
+  
+  hashTagSeparatorExp: RegExp = /,| /;
   constructor(private _service: PaiService, private _router: Router){};
   onEditorChange(event: any) {
     this.editorData = event;

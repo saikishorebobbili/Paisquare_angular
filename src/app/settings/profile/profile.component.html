@@ -1,0 +1,183 @@
+<br><br><br>
+<div style="text-align: center;">
+    <i class="fa fa-user fa-4x" style="color: rgba(48, 0, 70, 0.842);">
+    @if (profile.brandname.length>0) {
+        Update your brand name
+    } @else {
+        {{profile.brandname}}
+    }
+    </i>
+</div>
+<br>    
+<div class="container">
+<div class="row"  >
+    <div class="col-12 col-sm-6 col-md-3">
+        <h5>Followers</h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;<label name="followers">32k</label>
+    </div>
+    <div class="col-12 col-sm-6  col-md-3">
+        <h5>Likes</h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;<label name="likes">64k</label>
+    </div>
+    <div class="col-12 col-sm-6  col-md-3" >
+        <h5>Ads</h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;<label name="ads">4</label>
+    </div>
+    <div class="col-12 col-sm-6  col-md-3">
+        <h5>Rating</h5>
+        &nbsp;&nbsp;&nbsp;&nbsp;<label name="rating">8.9</label>
+    </div>
+</div>
+</div><br><br>
+
+    <div class="container form form-group">
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Bio</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="username">{{profile.bio}}</label>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Brand Name</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="username">{{profile.brandname}}</label>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Username</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="username">{{profile.username}}</label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>First Name</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="first_name">{{profile.firstname}}</label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Last name</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="last_name">{{profile.lastname}}</label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Email</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="email">{{profile.email}}</label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Number</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="number">{{profile.mobilenumber}}</label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Address</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="address">{{profile.address}}</label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5>Country</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="email">{{profile.country}}</label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5 style="color: rgb(0, 247, 144);">Website</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label"><a href="{{profile.website}}" target="_blank">{{profile.website}}</a></label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5 style="color: rgb(0, 247, 144);">Youtube</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label"><a href="{{profile.youtube}}" target="_blank">{{profile.youtube}}</a></label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5 style="color: rgb(0, 247, 144);">Facebook </h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="facebook"><a href="{{profile.facebook}}" target="_blank">{{profile.facebook}}</a></label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5 style="color: rgb(0, 247, 144);">Instagram</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label"><a href="{{profile.instagram}}" target="_blank">{{profile.instagram}}</a></label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5 style="color: rgb(0, 247, 144);">Twitter</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="twitter"><a href="{{profile.twitter}}" target="_blank">{{profile.twitter}}</a></label>
+            </div>
+        </div>
+        
+        <br>
+        <div class="row">
+            <div class="col-12 col-md-3 col-sm-2">
+                <h5 style="color: rgb(0, 247, 144);">Pinterest</h5>
+            </div>
+            <div class="col-12 col-md-8 col-sm-10">
+                <label class="form-label" name="pinterest"><a href="{{profile.pinterest}}" target="_blank">{{profile.pinterest}}</a></label>
+            </div>
+        </div>
+
+    </div>
+<br><br><br>

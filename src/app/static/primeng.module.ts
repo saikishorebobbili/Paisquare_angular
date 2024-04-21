@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from 'primeng/chart';
 import { SidebarModule } from 'primeng/sidebar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
@@ -13,15 +12,20 @@ import { RatingModule } from 'primeng/rating';
 import { TreeModule } from 'primeng/tree';
 import { MenubarModule } from 'primeng/menubar';
 import { FormsModule } from '@angular/forms';
+import { KeyFilterModule } from 'primeng/keyfilter';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-
+import { ChipModule } from 'primeng/chip';
+import { ToolbarModule } from 'primeng/toolbar';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
 const PRIMENG_MODULES:any[]=[
     CommonModule,
     DialogModule,
-    BrowserAnimationsModule,
     FormsModule,
     InputTextareaModule,
+    MultiSelectModule,
     CheckboxModule,
     HttpClientModule,
     AppRoutingModule,
@@ -33,7 +37,12 @@ const PRIMENG_MODULES:any[]=[
     RatingModule,
     SidebarModule,
     TreeModule,
+    ChipModule ,
     MenubarModule,
+    ToolbarModule,
+    InputTextModule,
+    DropdownModule,
+    KeyFilterModule,
 ]
 
 @NgModule({

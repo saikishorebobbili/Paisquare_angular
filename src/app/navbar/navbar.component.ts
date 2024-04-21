@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import {HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { TreeNode } from 'primeng/api';
+import { Tree } from 'primeng/tree';
 
 @Component({
   selector: 'app-navbar',
@@ -17,16 +18,8 @@ export class NavbarComponent  implements OnInit{
   constructor(private _service: PaiService,private http: HttpClient,private _router: Router,private _route: ActivatedRoute) {
        
   }
-  advertisements:any[]=[];
-  userAdvertisementslist: any[]=[];
-  blockedAdvertisementslist: any[]=[];
-  followingAdvertisementslist: any[]=[];
-  followerslist: any[] = [];
-  userData: any[] = [];
-  blockedlist: any[]=[];
-  favouriteslist: any[]=[];
   userId='';
-  
+  @ViewChild('tree') tree: Tree | undefined;
   sidebarVisible: boolean = false;
   sidebarVisible1:boolean=true;
   firstName=' ';
@@ -41,71 +34,59 @@ export class NavbarComponent  implements OnInit{
       if(!this.userId && !this.firstName && !this.lastName){
         this._router.navigate(['login'])
       }
-      //drop down user and advertiser list
       this.nodes = [
           {
               key: '0',
               label: 'User',
               children: [
-                  { key: '0-0', label: 'Dashboard', data: 'userdashboard', type: 'url',icon:'pi pi-home'},
-                  { key: '0-1', label: 'Your activities', data: 'useractivities', type: 'url',icon:'pi pi-chart-line'},
-                  { key: '0-3', label: 'Withdraw', data: 'withdraw', type: 'url',icon:'pi-cart-plus'}
+                  { key: '0-0', label: 'Dashboard', data: 'user/userdashboard', type: 'url',icon:'pi pi-home'},
+                  { key: '0-1', label: 'Your activities', data: 'user/useractivities', type: 'url',icon:'pi pi-chart-line'},
+                  { key: '0-3', label: 'Withdraw', data: 'user/withdraw', type: 'url',icon:'pi-cart-plus'}
               ]
           },
           {
               key: '1',
               label: 'Advertiser',
               children: [
-                  { key: '1-0', label: 'Dashboard', data: 'advertiserdashboard', type: 'url',icon:'pi pi-home' },
-                  { key: '1-1', label: 'Report', data: 'advertiserreport', type: 'url' ,icon:'pi pi-chart-bar'},
-                  { key: '1-2', label: 'My Advertisment', data: "['/myadvertisement', userId]", type: 'url',icon:'pi pi-folder' },
-                  { key: '1-3', label: 'Advertise', data: 'advertisementform', type: 'url',icon:'pi pi-plus' }
+                  { key: '1-0', label: 'Dashboard', data: 'advertiser/advertiserdashboard', type: 'url',icon:'pi pi-home' },
+                  { key: '1-1', label: 'Report', data: 'advertiser/advertiserreport', type: 'url' ,icon:'pi pi-chart-bar'},
+                  { key: '1-2', label: 'My Advertisment', data: 'advertiser/myadvertisement/:userId', type: 'url',icon:'pi pi-folder' },
+                  { key: '1-3', label: 'Advertise', data: 'advertiser/advertise', type: 'url',icon:'pi pi-plus' }
               ]
-          }
+          },
+          {
+            key: '2',
+            label: 'Settings',
+            children: [
+                { key: '2-0', label: 'Profile', data: 'home/profile/:userId', type: 'url',icon:'pi pi-home'},
+                { key: '2-1', label: 'Update profile', data: 'home/profileupdate', type: 'url',icon:'pi pi-chart-line'},
+            ]
+          },
       ];
     }
-    advertiserdashboardComponent:Boolean=false;
-    advertiserreportComponent:Boolean=false;
-    useractivitiesComponent:Boolean=false;
-    userdashboardComponent:Boolean=false;
-    userwithdrawComponent:Boolean=false;
-    displayadvertisementformComponent:boolean=false;
-    componentViewMethod(val:String){
-      console.log(val)
-      this.advertiserdashboardComponent=false;
-      this.advertiserreportComponent=false;
-      this.useractivitiesComponent=false;
-      this.userdashboardComponent=false;
-      this.userwithdrawComponent=false;
-      this.displayadvertisementformComponent=false;
-      if(val==="advertisementform"){
-        this.displayadvertisementformComponent=true;
-      }
-      else if(val==="advertiserdashboard") {
-        this.advertiserdashboardComponent=true;
-      } 
-      else if(val==="advertiserreport") {
-        this.advertiserreportComponent=true;
-      } 
-      else if(val==="userdashboard") {
-        this.userdashboardComponent=true;
-      } 
-      else if(val==="useractivities") {
-        this.useractivitiesComponent=true;
-      } 
-      else if(val==="userwithdrawComponent") {
-        this.userwithdrawComponent=true;
-      } 
-      else if(val==="advertiserdashboard") {
-        this.advertiserdashboardComponent=true;
-      } else {
-        
-      }
-      console.log(this.advertiserdashboardComponent)
-      console.log(this.advertiserreportComponent)
-      console.log(this.useractivitiesComponent)
-      console.log(this.userdashboardComponent)
-      console.log(this.userwithdrawComponent)
+  componentViewMethod(val:String){
+    console.log(val)
+    if (val.includes('myadvertisement')) {
+      this._router.navigate([val.replace(':userId', this.userId)]);
+    }else if (val.includes('home/profile/')) {
+      this._router.navigate([val.replace(':userId', this.userId)]);
+    } 
+     else {
+      this._router.navigate([val]);
+    }
+  }
+  ngAfterViewInit() {
+    if (this.tree) {
+      this.expandAllNodes(this.tree.value);
+    }
   }
 
+  expandAllNodes(nodes: TreeNode[]) {
+    nodes.forEach(node => {
+      node.expanded = true; // Expand current node
+      if (node.children && node.children.length > 0) {
+        this.expandAllNodes(node.children); // Recursively expand children
+      }
+    });
+  }
 }

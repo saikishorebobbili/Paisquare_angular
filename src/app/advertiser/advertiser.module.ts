@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Import CommonModule
 import { RouterModule } from '@angular/router';
-
 import { AdvertiserRoutingModule } from './advertiser.routes';
 import { AdvertisementformComponent } from './Ad/advertisementform/advertisementform.component';
 import { AdvertiserdashboardComponent } from './advertiserdashboard/advertiserdashboard.component';
@@ -21,7 +19,6 @@ import { HomepageComponent } from './Ad/advertisements/homepage.component';
     HomepageComponent,
   ],
   imports: [
-    CommonModule, 
     RouterModule.forChild([]),
     AdvertiserRoutingModule,
     PrimengModule

@@ -4,12 +4,17 @@ import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Comments,Follower,Visited,Like, Block, Report,Favourite } from '../../../paisa';
-
+interface City {
+  name: string,
+  value: string
+}
 @Component({
   selector: 'app-alladvertisements',
   templateUrl: './alladvertisements.component.html',
   styleUrls: ['./alladvertisements.component.css']
 })
+/* todo write code for filtering ad by country*/
+
 export class AlladvertisementsComponent implements OnInit {
 constructor(private _service: PaiService,private http: HttpClient,private _router: Router,private _route: ActivatedRoute) {
        
@@ -23,7 +28,17 @@ userData: any[] = [];
 blockedlist: any[]=[];
 favouriteslist: any[]=[];
 userId='';
+
+cities!: City[];
+selectedCities!: City[];
 ngOnInit(){
+  this.cities = [
+    {name: 'New York', value: 'NY'},
+    {name: 'Rome', value: 'RM'},
+    {name: 'London', value: 'LDN'},
+    {name: 'Istanbul', value: 'IST'},
+    {name: 'Paris', value: 'PRS'}
+];
   this._route.params.subscribe(params => {
     const adId = params['id']; // Access ad ID from URL if provided
     const userId = params['userId']; // Access user ID from URL if provided

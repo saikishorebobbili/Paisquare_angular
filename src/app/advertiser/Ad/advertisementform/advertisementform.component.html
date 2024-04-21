@@ -61,10 +61,6 @@
                             <label  id="admoney" name="admoney">Per click</label><br>
                         </div><br>
                     </div>
-                    <label for="adhead" class="col-12 col-md-3 col-sm-3 col-form-label">Hash tags</label>
-                    <div class="col-12 col-md-9 offset-xs-1 col-sm-9">
-                        <textarea type="text" class="form-control" id="adhead" name="hashtags" placeholder="Enter comma seperated hashtags here" [(ngModel)]="advertise.hashtags"></textarea><br>
-                    </div><br>
                     <div class="row">
                         <label for="adhead" class="col-12 col-md-3 col-sm-3 col-form-label">Country</label>
                         <div class="col-12 col-md-3 offset-xs-1 col-sm-3">
@@ -77,6 +73,11 @@
                         <div class="col-12 col-md-3 offset-xs-1 col-sm-3">
                             <input type="text" class="form-control" id="adsilver" name="silver" placeholder="Target District" [(ngModel)]="advertise.district"><br>
                         </div><br>
+                        
+                        <div>
+                            <label>Enter hashtags</label>
+                            <p-chips [(ngModel)]="advertise.hashtags" separator="," placeholder="Maximum 5 items"></p-chips>
+                        </div>
                     </div>
                     
                     <h3 class="text-danger">{{message}}</h3>
