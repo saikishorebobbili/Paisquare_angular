@@ -1,13 +1,14 @@
 <br><br>
 <div style="display: flex;" class="gap-2">
-    <p-chip label="Action"></p-chip>
-    <p-chip label="Comedy"></p-chip>
-    <p-chip label="Mystery"></p-chip>
-    <p-chip label="Thriller" [removable]="true"></p-chip>
+    <p-chip label="All"></p-chip>
+    <p-chip label="Blogging"></p-chip>
+    <p-chip label="Agriculture"></p-chip>
+    <p-chip label="Software"></p-chip>
+    <p-chip label="Industry" [removable]="true"></p-chip>
     <div class="card flex justify-content-center">
         <p-multiSelect [options]="cities" [(ngModel)]="selectedCities" 
         optionLabel="name"
-        optionValue="value"
+        optionValue="value" placeholder="Select location"
         display="chip" [showClear]="true" ></p-multiSelect>
     </div>
 </div>

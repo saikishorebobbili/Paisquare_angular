@@ -20,11 +20,16 @@ import { ChipModule } from 'primeng/chip';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
+import { CardModule } from 'primeng/card';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { ListboxModule } from 'primeng/listbox';
 const PRIMENG_MODULES:any[]=[
     CommonModule,
     DialogModule,
     FormsModule,
     InputTextareaModule,
+    ListboxModule,
+    OverlayPanelModule,
     MultiSelectModule,
     CheckboxModule,
     HttpClientModule,
@@ -32,6 +37,7 @@ const PRIMENG_MODULES:any[]=[
     ChartModule,
     SidebarModule,
     ButtonModule,
+    CardModule,
     AvatarModule,
     EditorModule,
     RatingModule,

@@ -1,7 +1,8 @@
-<div class="row">
-    <p-toolbar>
+<div class="grid">
+    <p-toolbar class="col-12">
         <div class="p-toolbar-group-start">
-            <button style="background-color: black;" (click)="sidebarVisible = true" class="btn"><i class="pi pi-bars" style="font-size: 2rem; color: white;"></i></button>
+            <button style="background-color: black;" (click)="sidebarVisible = true" class="btn">
+                <i class="pi pi-bars" style="font-size: 2rem; color: white;"></i></button>
         </div>
         <div class="p-toolbar-group-center">
             {{firstName}} {{lastName}}
@@ -14,7 +15,7 @@
         </div>
     </p-toolbar>
 </div>
-<div class="row">
+<div class="grid">
     <div class="col-3 fixed-left" id="sidebar">
         <p-tree [value]="nodes" [style]="{'border': 'none'}" #tree class="w-full md:w-30rem">
             <ng-template let-node pTemplate="url">
@@ -32,7 +33,7 @@
     </div>
     <br><br><br><br>
     <div class="col-3" id="content">
-        <div class="container" style="position: fixed; padding-top: 50px; z-index: -1;">
+        <div class="container" style="position: fixed; padding-top: 0px; z-index: -1;">
             <img src="../../assets/images/rightad.jpg" width="300px"/>
         </div>
     </div>

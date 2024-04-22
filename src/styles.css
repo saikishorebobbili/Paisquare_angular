@@ -1,9 +1,15 @@
-/* Import Bootstrap styles */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-
-/* Import PrimeNG styles */
+@import "~primeicons/primeicons.css";
+@import '~primeflex/primeflex.css';
 @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/primeng.min.css';
+
 :host ::ng-deep .p-tree .p-tree-container ol, ul {
     padding-left: 0rem !important;
+}
+.container{
+    padding: 16px;
+}
+
+a{
+   cursor: pointer;
 }

@@ -272,5 +272,10 @@ export class HomepageComponent implements OnInit {
   editAdvertisement(advertisementid:Number){
 
   }
-
+  showReportDialog:boolean=false;
+  advertisementId:number=0;
+  showReportDialogBox(advertisementId:number){
+    this.showReportDialog=true
+    this.advertisementId=advertisementId;
+  }
 }
