@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlladvertisementsComponent } from './Ad/alladvertisements/alladvertisements.component';
-import { UseractivitiesComponent } from './useractivities/useractivities.component';
+import { UseractivitiesComponent } from '../user/useractivities/useractivities.component';
 import { AdvertiserdashboardComponent } from './advertiserdashboard/advertiserdashboard.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
@@ -13,7 +13,6 @@ const routes: Routes = [
     component:NavbarComponent,
     children:[
       { path: '', component: AlladvertisementsComponent },
-      { path: 'useractivities', component: UseractivitiesComponent },
       { path: 'advertiserdashboard', component: AdvertiserdashboardComponent },
       { path: 'advertiserreport',component:AdvertiserreportsComponent},
       { path: 'advertise',component:AdvertisementformComponent},

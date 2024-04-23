@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
   },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+  },
   { 
     path:'general',
     component:NavbarComponent,
@@ -32,9 +36,6 @@ const routes: Routes = [
   { path:'app-privacy-policy',component:PrivacyPolicyComponent},
   { path: 'login', component: LoginComponent },
   { path: 'createaccount', component: RegistrationComponent },
-  { path: 'block/:id', component: LandingcontentComponent },
-  { path: 'reportadvertisement/:id', component: LandingcontentComponent },
-  { path: 'save/:id', component: LandingcontentComponent },
   { path: '', component: LandingcontentComponent },
 ];
 

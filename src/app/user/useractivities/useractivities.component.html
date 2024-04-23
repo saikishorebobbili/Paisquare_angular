@@ -1,4 +1,25 @@
-
+<div class="flex gap-2">
+    <a (click)="fetchAdvertisementsOnClick('Liked')">
+        <p-chip label="Liked" [style.color]="activeButton === 'Liked' ? 'blue' : 'red'">
+        </p-chip>
+    </a>
+    <a (click)="fetchAdvertisementsOnClick('Following')">
+        <p-chip label="Following" [ngStyle]="{'color': activeButton== 'Following'? 'blue' : 'black'}">
+        </p-chip>
+    </a>
+    <a (click)="fetchAdvertisementsOnClick('Favourites')">
+        <p-chip label="Favourites" [ngStyle]="{'color': activeButton== 'Favourites'? 'blue' : 'black'}">
+        </p-chip>
+    </a>
+    <a (click)="fetchAdvertisementsOnClick('Visited')">
+        <p-chip label="Visited" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
+        </p-chip>
+    </a>
+</div>
+<div >
+    <app-homepage *ngFor="let ad of advertisementsOnClick" [ad]="ad"></app-homepage>
+</div><br><br><br>
+<!--
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
@@ -36,4 +57,6 @@
             </div>
         </div>
 </div>
+-->
+
 <br><br><br><br>

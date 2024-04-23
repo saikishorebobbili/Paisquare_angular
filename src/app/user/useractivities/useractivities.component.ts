@@ -13,6 +13,7 @@ export class UseractivitiesComponent implements OnInit{
   constructor(private _service: PaiService,private http: HttpClient,private _router: Router,private _route: ActivatedRoute) {
        
   }
+  
   followingAdvertisementsList: any[]=[];
   favouriteAdvetisementsList: any[]=[];
   likedAdvetisementsList: any[]=[];
@@ -20,13 +21,59 @@ export class UseractivitiesComponent implements OnInit{
   blockedAdvertisementsList: any[]=[];
   reportedAdvetisementsList: any[]=[];
   userId='';
-
   ngOnInit(){
     this.visitedAdvertisements()
     this.favouriteAdvertisements()
     this.likedAdvertisements()
     this.followingAdvertisements()
     this.userId=this._service.userId;
+    this._service.getLikedAdvertisements().subscribe(
+      data => {
+        this.advertisementsOnClick = data;
+        console.log("liked list",data)
+    },
+      error=>{console.log("error occure while retrieving the data!")
+    });
+  }
+  advertisementsOnClick:any;
+  activeButton:String='Liked';
+  fetchAdvertisementsOnClick(value:string){
+    if(value=='Liked'){
+      this.activeButton='Liked'
+      this._service.getLikedAdvertisements().subscribe(
+        data => {
+          this.advertisementsOnClick = data;
+          console.log("liked list",data)
+      },
+        error=>{console.log("error occure while retrieving the data!")
+      });
+    } else if (value=='Favourites') {
+      this.activeButton='Favourites'
+      this._service.getFavouriteAdvertisements().subscribe(
+        data => {
+          this.advertisementsOnClick = data;
+          console.log("favourite list",data)
+      },
+        error=>{console.log("error occure while retrieving the data!")
+      });
+    } else if (value=='Following') {
+      this.activeButton='Following'
+      this._service.getFollowingAdvertisements().subscribe(
+        data => {
+          this.advertisementsOnClick = data;
+      },
+        error=>{console.log("error occure while retrieving the data!")
+      });
+    } else {
+      this.activeButton='Visited'
+      this._service.getVisitedAdvertisements().subscribe(
+        data => {
+          this.advertisementsOnClick = data;
+          console.log("visited list",data)
+      },
+        error=>{console.log("error occure while retrieving the data!")
+      });
+    }
   }
   favouriteAdvertisements(){
     this._service.getFavouriteAdvertisements().subscribe(

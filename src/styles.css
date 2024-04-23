@@ -6,10 +6,6 @@
 :host ::ng-deep .p-tree .p-tree-container ol, ul {
     padding-left: 0rem !important;
 }
-.container{
-    padding: 16px;
-}
-
 a{
    cursor: pointer;
 }

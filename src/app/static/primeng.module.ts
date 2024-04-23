@@ -23,6 +23,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ListboxModule } from 'primeng/listbox';
+import { HomepageComponent } from '../advertiser/Ad/advertisements/homepage.component';
 const PRIMENG_MODULES:any[]=[
     CommonModule,
     DialogModule,
