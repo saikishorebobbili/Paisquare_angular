@@ -6,13 +6,11 @@ import { SettingsRoutingModule } from './settings.routes';
 import { PrimengModule } from '../static/primeng.module';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
-import { UserdashboardComponent } from '../user/userdashboard/userdashboard.component';
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    ProfileupdateComponent,
-    UserdashboardComponent,
+    ProfileupdateComponent
   ],
   imports: [
     RouterModule.forChild([]),

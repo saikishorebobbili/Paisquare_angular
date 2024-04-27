@@ -3,7 +3,7 @@ import { PaiService } from '../../paisa.service';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import { Comments,Follower,Visited,Like, Block, Report,Favourite } from '../../paisa';
+import { Comments,Follower,Visited,Like, Block, Report,Favourite, Profile } from '../../paisa';
 @Component({
   selector: 'app-useractivities',
   templateUrl: './useractivities.component.html',
@@ -14,71 +14,53 @@ export class UseractivitiesComponent implements OnInit{
        
   }
   
-  followingAdvertisementsList: any[]=[];
-  favouriteAdvetisementsList: any[]=[];
-  likedAdvetisementsList: any[]=[];
-  visitedAdvertisementsList:any[]=[];
-  blockedAdvertisementsList: any[]=[];
-  reportedAdvetisementsList: any[]=[];
   userId='';
+  advertisement:boolean=false;
+  profile:boolean=false;
   ngOnInit(){
-    this.visitedAdvertisements()
-    this.favouriteAdvertisements()
-    this.likedAdvertisements()
-    this.followingAdvertisements()
     this.userId=this._service.userId;
-    this._service.getLikedAdvertisements().subscribe(
+    this.likedAdvertisements()
+    this._service.getUserFollowingProfiles(+this.userId).subscribe(
       data => {
-        this.advertisementsOnClick = data;
-        console.log("liked list",data)
+        console.log("userdata",data)
     },
       error=>{console.log("error occure while retrieving the data!")
     });
+    
   }
   advertisementsOnClick:any;
   activeButton:String='Liked';
   fetchAdvertisementsOnClick(value:string){
+    this.advertisement=true;
+    this.profile=false;
     if(value=='Liked'){
       this.activeButton='Liked'
-      this._service.getLikedAdvertisements().subscribe(
-        data => {
-          this.advertisementsOnClick = data;
-          console.log("liked list",data)
-      },
-        error=>{console.log("error occure while retrieving the data!")
-      });
+      this.likedAdvertisements()
+      
     } else if (value=='Favourites') {
       this.activeButton='Favourites'
-      this._service.getFavouriteAdvertisements().subscribe(
-        data => {
-          this.advertisementsOnClick = data;
-          console.log("favourite list",data)
-      },
-        error=>{console.log("error occure while retrieving the data!")
-      });
+      this.favouriteAdvertisements()
+      
     } else if (value=='Following') {
       this.activeButton='Following'
-      this._service.getFollowingAdvertisements().subscribe(
-        data => {
-          this.advertisementsOnClick = data;
-      },
-        error=>{console.log("error occure while retrieving the data!")
-      });
-    } else {
+      this.followingAdvertisements()
+      
+    } else if (value=='Visited'){
       this.activeButton='Visited'
-      this._service.getVisitedAdvertisements().subscribe(
-        data => {
-          this.advertisementsOnClick = data;
-          console.log("visited list",data)
-      },
-        error=>{console.log("error occure while retrieving the data!")
-      });
+      this.visitedAdvertisements()
+      
+    } else if (value=='Blocked'){
+      this.activeButton='Blocked'
+      this.blockedAdvertisements()
+      
+    } else{
+      this.advertisementsOnClick = [];
     }
   }
   favouriteAdvertisements(){
     this._service.getFavouriteAdvertisements().subscribe(
       data => {
-        this.favouriteAdvetisementsList = data;
+        this.advertisementsOnClick = data;
         console.log("favourite list",data)
     },
       error=>{console.log("error occure while retrieving the data!")
@@ -87,7 +69,7 @@ export class UseractivitiesComponent implements OnInit{
   likedAdvertisements(){
     this._service.getLikedAdvertisements().subscribe(
       data => {
-        this.likedAdvetisementsList = data;
+        this.advertisementsOnClick = data;
         console.log("liked list",data)
     },
       error=>{console.log("error occure while retrieving the data!")
@@ -96,7 +78,8 @@ export class UseractivitiesComponent implements OnInit{
   followingAdvertisements(){
     this._service.getFollowingAdvertisements().subscribe(
       data => {
-        this.followingAdvertisementsList = data;
+        this.advertisementsOnClick = data;
+        console.log("following advertisement",data)
     },
       error=>{console.log("error occure while retrieving the data!")
     });
@@ -104,8 +87,49 @@ export class UseractivitiesComponent implements OnInit{
   visitedAdvertisements(){
     this._service.getVisitedAdvertisements().subscribe(
       data => {
-        this.visitedAdvertisementsList = data;
+        this.advertisementsOnClick = data;
         console.log("visited list",data)
+    },
+      error=>{console.log("error occure while retrieving the data!")
+    });
+  }
+  blockedAdvertisements(){
+    this._service.getBlockedAdvertisements().subscribe(
+      data => {
+        this.advertisementsOnClick = data;
+        console.log("getBlockedAdvertisements list",data)
+    },
+      error=>{console.log("error occure while retrieving the data!")
+    });
+  }
+  profileList:any;
+  fetchProfileOnClick(value:string){
+    this.advertisement=false;
+    this.profile=true;
+    if(value=='Blocked'){
+      this.activeButton='Blocked'
+      this.Blockedprofile()
+      
+    } else if (value=='Following') {
+      this.activeButton='Following'
+      this.followingprofile()
+      
+    }
+  }
+  Blockedprofile(){
+    this._service.getUserBlockedProfiles(+this.userId).subscribe(
+      data => {
+        this.profileList = data;
+        console.log("getUserBlockedProfiles list",data)
+    },
+      error=>{console.log("error occure while retrieving the data!")
+    });
+  }
+  followingprofile(){
+    this._service.getUserFollowingProfiles(+this.userId).subscribe(
+      data => {
+        this.profileList = data;
+        console.log("followingprofile list",data)
     },
       error=>{console.log("error occure while retrieving the data!")
     });

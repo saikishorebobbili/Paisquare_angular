@@ -61,6 +61,12 @@ export class PaiService {
   public getUserAdvertisements(userId:Number){
     return this._http.get<any>(`http://localhost:3300/${userId}/useradvertisements`);
   }
+  public getUserFollowingProfiles(userId:number){
+    return this._http.get<any>(`http://localhost:3300/${userId}/UserFollowingProfiles`);
+  }
+  public getUserBlockedProfiles(userId:number){
+    return this._http.get<any>(`http://localhost:3300/${userId}/UserBlockedProfiles`);
+  }
   public postBlockAdvertiser(block:Block,userid:Number,advertiserId:Number){
     return this._http.post<any>(`http://localhost:3300/${userid}/${advertiserId}/blockadvertiser`,block);
   }
@@ -83,7 +89,7 @@ export class PaiService {
   public getFavouriteGraphFromRemote(userId:Number,reportperiod:String){
     return this._http.get<any>(`http://localhost:3300/${userId}/${reportperiod}/favouritegraph`);
   }
-  //------------------
+  //------------------For userdashboard----------------
   public getFavouriteAdvertisements(){
     return this._http.get<any>(`http://localhost:3300/${this.userId}/getfavouriteadvertisementslist`);
   }
@@ -93,9 +99,14 @@ export class PaiService {
   public getFollowingAdvertisements(){
     return this._http.get<any>(`http://localhost:3300/${this.userId}/getfollowingadvertisementslist`);
   }
+  public getBlockedAdvertisements(){
+    return this._http.get<any>(`http://localhost:3300/${this.userId}/getUserBlockedAdvertisementsList`);
+  }
   public getVisitedAdvertisements(){
     return this._http.get<any>(`http://localhost:3300/${this.userId}/getvisitedadvertisementslist`);
   }
+
+
   public getAdvertisementTransactionData(){
     return this._http.get<any>(`http://localhost:3300/${this.userId}/getadvertisementtransactiondata`);
   }
