@@ -8,6 +8,7 @@ import { PrivacyPolicyComponent } from './general/privacy-policy/privacy-policy.
 import { NavbarComponent } from './navbar/navbar.component';
 import { ContactusComponent } from './general/contactus/contactus.component';
 import { AboutUSComponent } from './general/about-us/about-us.component';
+import { ProfileComponent } from './settings/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   {
     path: 'user',
     loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    
   },
   { 
     path:'general',
@@ -29,7 +31,15 @@ const routes: Routes = [
       { path:'app-termsand-conditions',component: TermsandConditionsComponent},
       { path:'app-privacy-policy',component:PrivacyPolicyComponent},
       { path:'contactUs',component:ContactusComponent},
-      { path:'aboutUs',component:AboutUSComponent}
+      { path:'aboutUs',component:AboutUSComponent},
+      { path: 'profile/:id', component: ProfileComponent},
+    ]
+  },
+  {
+    path:'visit',
+    component:NavbarComponent,
+    children:[
+      { path: 'profile/:id', component: ProfileComponent},
     ]
   },
   { path:'app-termsand-conditions',component: TermsandConditionsComponent},

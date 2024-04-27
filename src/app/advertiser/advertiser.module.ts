@@ -8,6 +8,7 @@ import { AlladvertisementsComponent } from './Ad/alladvertisements/alladvertisem
 import { PrimengModule } from '../static/primeng.module';
 import { HomepageComponent } from './Ad/advertisements/homepage.component';
 import { UseractivitiesComponent } from '../user/useractivities/useractivities.component';
+import { ProfileComponent } from '../settings/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { UseractivitiesComponent } from '../user/useractivities/useractivities.c
     AdvertiserdashboardComponent,
     AdvertiserreportsComponent,
     AlladvertisementsComponent,
-    UseractivitiesComponent
+    UseractivitiesComponent,
   ],
   imports: [
     RouterModule.forChild([]),

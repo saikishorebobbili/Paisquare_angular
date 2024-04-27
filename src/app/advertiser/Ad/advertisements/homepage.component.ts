@@ -278,4 +278,7 @@ export class HomepageComponent implements OnInit {
     this.showReportDialog=true
     this.advertisementId=advertisementId;
   }
+  visitProfile(id:number){
+    this._router.navigate(['visit/profile', id]);
+  }
 }

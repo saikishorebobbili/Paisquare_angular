@@ -20,9 +20,10 @@
         </p-chip>
     </a>
 </div>
-<br>
+
 <div >
     @if (activeButton=='Following') {
+        <br>
         <div class="flex gap-2">
             <a (click)="fetchAdvertisementsOnClick('Following')">
                 <p-chip label="Following Advertiser" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
@@ -35,6 +36,7 @@
         </div>
     }
     @if (activeButton=='Blocked') {
+        <br>
         <div  class="flex gap-2">
             <a (click)="fetchAdvertisementsOnClick('Blocked')">
                 <p-chip label="Blocked Advertiser" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
@@ -46,12 +48,35 @@
             </a>
         </div>
     }
+    
     @if (profile==true) {
-        @for (profile of profileList; track $index) {
-            {{profile.id}}
-            {{profile.username}}
-            {{profile.brandname}}
-        }
+        <br>
+        <div class="grid">
+            @for (profile of profileList; track $index) {
+                <div class="lg:col-4 md:col-3 sm:col-2">
+                    <p-card>
+                        <ng-template pTemplate="body">
+                            <div class="flex justify-content-center algin-content-center">
+                                <div class="flex flex-column">
+                                    <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+                                    <label>{{profile.brandname}}</label>
+                                </div>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="footer" style="margin: 0px;">
+                            <div class="flex justify-content-around flex-wrap">
+                                <p-button (onClick)="visitProfile(profile.id)" label="Visit Profile"></p-button>
+                                @if (followingProfileView) {
+                                    <p-button  (click)="follower(profile.id)"label="UnFollow"></p-button>
+                                } @else {
+                                    <p-button (click)="block(profile.id)" label="Unblock"></p-button>
+                                }
+                            </div>
+                        </ng-template>
+                    </p-card>
+                </div>
+            }
+        </div>
     } @else {
         <app-homepage *ngFor="let ad of advertisementsOnClick" [ad]="ad"></app-homepage>
     }

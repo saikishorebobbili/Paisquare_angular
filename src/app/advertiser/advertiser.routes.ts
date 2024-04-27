@@ -7,6 +7,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
 import { AdvertisementformComponent } from './Ad/advertisementform/advertisementform.component';
 import { LandingcontentComponent } from '../landingpage/landingcontent/landingcontent.component';
+import { ProfileComponent } from '../settings/profile/profile.component';
 const routes: Routes = [
   {
     path:'',

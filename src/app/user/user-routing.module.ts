@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { UseractivitiesComponent } from './useractivities/useractivities.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { ProfileComponent } from '../settings/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
       { path: 'useractivities', component: UseractivitiesComponent },
       { path: 'userdashboard',component:UserdashboardComponent},
     ]
-  }
+  },
 ];
 
 @NgModule({

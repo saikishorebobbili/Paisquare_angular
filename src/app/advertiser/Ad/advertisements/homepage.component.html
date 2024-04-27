@@ -149,9 +149,7 @@
     <p-overlayPanel #op>
         <ng-template pTemplate="content">
             <div>
-                <button pButton [routerLink]="['/profile', ad.advertiser.id]">
-                    <label>Visit Profile</label>
-                </button>
+                <p-button (onClick)="visitProfile(ad.advertiser.id)" label="Visit Profile"></p-button>
             </div><br>
             <div>
                 <p-button   (click)="block(ad.advertiser.id)">

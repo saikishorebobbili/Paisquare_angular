@@ -6,6 +6,7 @@ import { PrimengModule } from '../static/primeng.module';
 import { UseractivitiesComponent } from './useractivities/useractivities.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { HomepageComponent } from '../advertiser/Ad/advertisements/homepage.component';
+import { ProfileComponent } from '../settings/profile/profile.component';
 
 
 @NgModule({

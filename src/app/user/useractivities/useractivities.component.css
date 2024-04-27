@@ -1,0 +1,18 @@
+
+:host ::ng-deep .p-card {
+    position: relative;
+}
+
+:host ::ng-deep .p-card .p-card-body {
+    height: 200px; /* Fixed height for the card body */
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Align items with space between them */
+}
+:host ::ng-deep .p-card .p-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

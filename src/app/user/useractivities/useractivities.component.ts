@@ -103,15 +103,18 @@ export class UseractivitiesComponent implements OnInit{
     });
   }
   profileList:any;
+  followingProfileView:boolean=false;
   fetchProfileOnClick(value:string){
     this.advertisement=false;
     this.profile=true;
     if(value=='Blocked'){
       this.activeButton='Blocked'
+      this.followingProfileView=false;
       this.Blockedprofile()
       
     } else if (value=='Following') {
       this.activeButton='Following'
+      this.followingProfileView=true;
       this.followingprofile()
       
     }
@@ -133,5 +136,36 @@ export class UseractivitiesComponent implements OnInit{
     },
       error=>{console.log("error occure while retrieving the data!")
     });
+  }
+  
+  followerobj= new Follower();
+  blockobj=new Block();
+  block(advertiserid: number){
+    this.blockobj.userid=this._service.userId;
+    this.blockobj.advertiserid=advertiserid;
+    this.blockobj.Blocked=true;
+    this._service.postBlockAdvertiser(this.blockobj,this._service.userId,advertiserid).subscribe(
+      data=>{
+        console.log("blocked successfully")
+        this.Blockedprofile()
+      },
+      error=>{
+        console.log("error occured while blocking advertiser")
+      }
+    )
+  }
+  follower(advertiserid: number){
+    this.followerobj.following=true;
+    this._service.FollowerFromRemote(this.followerobj,advertiserid,+this.userId).subscribe(
+      data=>{
+        this.followingprofile()
+      },
+      error=>{
+        console.log("error occured for following");
+      }
+    )
+  }
+  visitProfile(id:number){
+    this._router.navigate(['general/profile', id]);
   }
 }
