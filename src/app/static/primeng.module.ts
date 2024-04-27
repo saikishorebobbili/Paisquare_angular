@@ -24,13 +24,21 @@ import { CardModule } from 'primeng/card';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ListboxModule } from 'primeng/listbox';
 import { HomepageComponent } from '../advertiser/Ad/advertisements/homepage.component';
+import { FieldsetModule } from 'primeng/fieldset';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { CalendarModule } from 'primeng/calendar';
+import { ChipsModule } from 'primeng/chips';
 const PRIMENG_MODULES:any[]=[
     CommonModule,
+    ChipsModule,
     DialogModule,
     FormsModule,
     InputTextareaModule,
+    CalendarModule,
+    RadioButtonModule,
     ListboxModule,
     OverlayPanelModule,
+    FieldsetModule,
     MultiSelectModule,
     CheckboxModule,
     HttpClientModule,

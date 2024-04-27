@@ -1,120 +1,214 @@
 
-<br><br><br>
 <div class="container">
-    <div class="row row-content">
-        <div class="col-12 col-sm-7 col-bg-7">
-            <h1 style="text-align:center;">Profile</h1>
-            <i class="fa fa-user fa-4x" style="text-align: center;"></i>
+    {{message}}
+    <form #profileupdateform="ngForm" (ngSubmit)="profileupdateForm()" >
+        <p-fieldset legend="Brand information">
+            <div class="grid">
+                <div class="col-12 md:col-5 sm:col-12">
+                    <img src="../../../assets/images/pai_square_with_name.jpg" width="100%" height="100%">
+                </div>
+                <div class="col-12 md:col-5 sm:col-12">
+                    <div class="pairs">
+                        <label>Brand name</label>
+                        <div>
+                            <input pInputText [(ngModel)]="profile.brandname" name="brandname" placeholder="Enter your brand name">
+                        </div>
+                    </div><br>
+                    <div class="pairs">
+                        <label>Brand Description</label>
+                        <div>
+                            <input pInputText [(ngModel)]="profile.bio" name="bio" placeholder="About your brand">
+                        </div>
+                    </div><br>
+                    <div class="pairs">
+                        <label>Brand Tagline</label>
+                        <div>
+                            <input pInputText name="tagline" placeholder="About your brand tagline">
+                        </div>
+                    </div><br>
+                    <div class="pairs">
+                        <label>Website</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.website" name="website" placeholder="Enter offical brand website">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-fieldset><br>
+        <p-fieldset legend="Personal information">
+            <div class="grid">
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Advertiser name</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.firstname" name="first_name" placeholder="Enter your name">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Email</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.email" name="email" placeholder="Enter Email">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Number</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.mobilenumber" name="number" placeholder="Enter number">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Country</label>
+                        <div>
+                            <p-dropdown [(ngModel)]="profile.country" name="country" placeholder="Select country"></p-dropdown>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Address</label>
+                        <div>
+                            <textarea pInputTextarea  [(ngModel)]="profile.address" name="address" style="width: 100px;" placeholder="Brand located at"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </p-fieldset><br>
+        <p-fieldset legend="Update password">
+            <div class="grid">
+                <div class="col-12 sm:col-12 md:col-5">
+                    <div class="pairs">
+                        <label>Password</label>
+                        <div>
+                            <input pInputText  name="password" placeholder="Enter password">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 sm:col-12 md:col-5">
+                    <div class="pairs">
+                        <label>Confirm Password</label>
+                        <div>
+                            <input pInputText name="ConfirmPassword" placeholder="Confirm password">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 sm:col-12 md:col-1">
+                    <p-button type="submit" label="Update password"></p-button>
+                </div>
+            </div>
+        </p-fieldset><br>
+        <p-fieldset legend="Brand recommendation">
+            <div class="grid">
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Catogery</label>
+                        <div>
+                            <p-dropdown name="category" placeholder="Enter brand category"></p-dropdown>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Gender</label>
+                        <div class="flex">
+                            <div class="flex">
+                                <p-radioButton name="Gender" value="Male" inputId="MaleGenderType"></p-radioButton>
+                                <label for="MaleGenderType" class="ml-2">Male</label>
+                            </div>
+                            <div class="flex">
+                                <p-radioButton name="Gender" value="Female" inputId="FemaleGenderType"></p-radioButton>
+                                <label for="FemaleGenderType" class="ml-2">Female</label>
+                            </div>
+                            <div class="flex">
+                                <p-radioButton name="Gender" value="Male" inputId="AllGenderType"></p-radioButton>
+                                <label for="AllGenderType" class="ml-2">All Gender types</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Established in</label>
+                        <div>
+                            <p-calendar name="establishedIn" dateFormat="dd/mm/yy" [showIcon]="true" placeholder="Your brand established in (year)"></p-calendar>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Company size</label>
+                        <div>
+                            <input pInputText  pKeyFilter="int" name="CompanySize" placeholder="Number of employees working in">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Hashtags</label>
+                        <div>
+                            <p-chips separator="," name="hashtags" placeholder="Enter hashtags"></p-chips>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
+        </p-fieldset><br>
+        <p-fieldset legend="Social Media">
+            <div class="grid">
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Youtube</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.youtube" name="youtube" placeholder="Enter youtube url">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Facebook</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.facebook" name="facebook" placeholder="Enter facebook url">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Instagram</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.instagram" name="instagram" placeholder="Enter instagram url">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Twitter</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.twitter" name="twitter" placeholder="Enter twitter url">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 md:col-6 sm:col-12">
+                    <div class="pairs">
+                        <label>Pinterest</label>
+                        <div>
+                            <input pInputText  [(ngModel)]="profile.pinterest" name="pinterest" placeholder="Enter printerest url">
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
+        </p-fieldset><br>
+        <div class="pairs">
+            <div class="col-12" class="flex justify-content-center">
+                <p-button  type="submit" label="Submit" class="btn btn-primary"></p-button>
+            </div>
         </div>
-        {{message}}
-        <div class="col-12">    
-            <form #profileupdateform="ngForm" (ngSubmit)="profileupdateForm()" class="form-group">
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Brand name</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" class="form-control" [(ngModel)]="profile.brandname" name="brandname">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Bio</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" class="form-control" [(ngModel)]="profile.bio" name="bio">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">First name</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.firstname" name="first_name">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Last name</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.lastname" name="last_name">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Email</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.email" name="email">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Number</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.mobilenumber" name="number">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Country</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.country" name="country">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Address</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <textarea class="form-control" [(ngModel)]="profile.address" name="address"></textarea>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Website</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.website" name="website">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Youtube</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.youtube" name="youtube">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Facebook</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.facebook" name="facebook">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Instagram</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.instagram" name="instagram">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Twitter</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.twitter" name="twitter">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <label class="form-group-label col-12 col-bg-3 col-sm-3">Pinterest</label>
-                    <div class="col-12 col-sm-7 col-bg-7">
-                        <input class="form-control" [(ngModel)]="profile.pinterest" name="pinterest">
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-12" style="text-align: center;">
-                        <input class="form-control" type="submit" name="submit" class="btn btn-primary">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    </form>
 </div>
-<br><br><br><br>
