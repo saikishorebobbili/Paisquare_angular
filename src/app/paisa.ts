@@ -1,100 +1,108 @@
 export class User {
     id!:Number;
-    email!:String;
-    username!:String;
-    firstname!:String;
-    lastname!:String;
-    password!:String;
+    email!:string;
+    username!:string;
+    firstname!:string;
+    lastname!:string;
+    password!:string;
     constructor(){}
 }
 
 export class Advertise{
-    brandname!:String;
-    description!:String;
-    url!:String
+    brandname!:string;
+    description!:string;
+    url!:string
     pai!:Number;
     paiperclick!:Number;
     paisa!:Number;
     paisaperclick!:Number;
-    country!:String;
-    state!:String;
-    district!:String;
-    hashtags!:String;
+    country!:string;
+    state!:string;
+    district!:string;
+    hashtags!:string;
     constructor(){}
 }
 export class Contactus{
-    name!:String; 
-    email!:String;
-    username!:String;
+    name!:string; 
+    email!:string;
+    username!:string;
     userid!:Number;
-    mobilenumber!:String;
-    issue!:String;
-    opendate!:String;
-    closedate!:String;
-    remarks!:String;
+    mobileNumber!:string;
+    issue!:string;
+    opendate!:string;
+    closedate!:string;
+    remarks!:string;
     constructor(){}
 }
 
 export class Profile{
-    username!:String;
-    bio!:String;
-    brandname!:String;
-    firstname!:String;
-    lastname!:String;
-    email!:String;
+    username!:string;
+    brandName!:string;
+    brandDescription!:string;
+    brandTagline!:string;
+    website!:string;
+    advertiserName!:string;
+    mobileNumber!:Number;
+    country!:string;
+    email!:string;
+    brandLocation!:string;
+    password!:string;
+    brandCategory!:string;
+    brandTargetGender!:string;
+    brandEstablishedIn!:string;
+    brandCompanyEmployeeSize!:string;
+    brandHashTags!: string[];
+    pinCodes!:number[];
+    brandTargetAge!:string;
     followers!:Number;
     ads!:Number;
-    mobilenumber!:Number;
-    country!:String;
-    address!:String;
-    website!:String;
-    youtube!:String;
-    facebook!:String;
-    instagram!:String;
-    twitter!:String;
-    pinterest!:String;
+    youtube!:string;
+    facebook!:string;
+    instagram!:string;
+    twitter!:string;
+    pinterest!:string;
 }
 
 export class Comments{
     advertisementid!:Number;
-    userid!:String;
+    userid!:string;
     adid!:Number;
-    comment!:String;
-    remark!:String;
-    temp1!:String;
+    comment!:string;
+    remark!:string;
+    temp1!:string;
 }
 
 export class Follower{
     advertiserid!:Number;
-    userid!:String;
+    userid!:string;
     following!:boolean;
 }
 
 export class Visited{
     advertisementid!:Number;
-    userid!:String;
+    userid!:string;
     visited!:boolean;
 }
 
 export class Like{
     advertisementid!:Number;
-    userid!:String;
+    userid!:string;
     visited!:boolean;
 }
 
 export class Block{
     advertiserid!:Number;
-    userid!:String;
+    userid!:string;
     Blocked!:boolean;
 }
 
 export class Report{
     advertisementid!:Number;
-    userid!:String;
-    reportedtext!:String;
+    userid!:string;
+    reportedtext!:string;
 }
 
 export class Favourite{
     advertisementid!:Number;
-    userid!:String;
+    userid!:string;
 }

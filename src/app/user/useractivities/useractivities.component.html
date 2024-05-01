@@ -26,11 +26,11 @@
         <br>
         <div class="flex gap-2">
             <a (click)="fetchAdvertisementsOnClick('Following')">
-                <p-chip label="Following Advertiser" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
+                <p-chip label="Advertisement" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
                 </p-chip>
             </a>
             <a (click)="fetchProfileOnClick('Following')">
-                <p-chip label="Following Profiles" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
+                <p-chip label="Profiles" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
                 </p-chip>
             </a>
         </div>
@@ -39,11 +39,11 @@
         <br>
         <div  class="flex gap-2">
             <a (click)="fetchAdvertisementsOnClick('Blocked')">
-                <p-chip label="Blocked Advertiser" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
+                <p-chip label="Advertisement" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
                 </p-chip>
             </a>
             <a (click)="fetchProfileOnClick('Blocked')">
-                <p-chip label="Blocked Profiles" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
+                <p-chip label="Profiles" [ngStyle]="{'color': activeButton=== 'Liked'? 'blue' : 'black'}">
                 </p-chip>
             </a>
         </div>
@@ -58,18 +58,18 @@
                         <ng-template pTemplate="body">
                             <div class="flex justify-content-center algin-content-center">
                                 <div class="flex flex-column">
-                                    <p-avatar label="P" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+                                    <p-avatar [label]="profile.brandname" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
                                     <label>{{profile.brandname}}</label>
                                 </div>
                             </div>
                         </ng-template>
                         <ng-template pTemplate="footer" style="margin: 0px;">
-                            <div class="flex justify-content-around flex-wrap">
-                                <p-button (onClick)="visitProfile(profile.id)" label="Visit Profile"></p-button>
+                            <div class="flex justify-content-around gap-2">
+                                <p-button (onClick)="visitProfile(profile.id)" icon="pi pi-eye" [outlined]="true" [text]="true" [raised]="true" label="Profile"></p-button>
                                 @if (followingProfileView) {
-                                    <p-button  (click)="follower(profile.id)"label="UnFollow"></p-button>
+                                    <p-button icon="pi pi-user-plus" [text]="true" [outlined]="true" [raised]="true"  (click)="follower(profile.id)"label="UnFollow"></p-button>
                                 } @else {
-                                    <p-button (click)="block(profile.id)" label="Unblock"></p-button>
+                                    <p-button icon="pi pi-ban" [text]="true" [outlined]="true" [raised]="true" (click)="block(profile.id)" label="Unblock"></p-button>
                                 }
                             </div>
                         </ng-template>

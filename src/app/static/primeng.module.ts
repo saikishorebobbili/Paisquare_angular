@@ -23,14 +23,21 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ListboxModule } from 'primeng/listbox';
-import { HomepageComponent } from '../advertiser/Ad/advertisements/homepage.component';
 import { FieldsetModule } from 'primeng/fieldset';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CalendarModule } from 'primeng/calendar';
 import { ChipsModule } from 'primeng/chips';
+import { SliderModule } from 'primeng/slider';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MessagesModule } from 'primeng/messages';
+import { InputMaskModule } from 'primeng/inputmask';
 const PRIMENG_MODULES:any[]=[
     CommonModule,
+    InputMaskModule,
+    ReactiveFormsModule,
+    SliderModule,
     ChipsModule,
+    MessagesModule,
     DialogModule,
     FormsModule,
     InputTextareaModule,

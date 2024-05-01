@@ -1,6 +1,9 @@
 <div class="grid">
     <p-toolbar class="col-12">
         <div class="p-toolbar-group-start">
+            <a>
+                <img src="../../../assets/images/pai_square_with_name.jpg" width="50px" height="50px" routerLink="advertiser">
+            </a>
             <button style="background-color: black;" (click)="sidebarVisible = true" class="btn">
                 <i class="pi pi-bars" style="font-size: 2rem; color: white;"></i></button>
         </div>
@@ -26,7 +29,7 @@
             </ng-template>
         </p-tree>
     </div>
-    <div class="col-6" id="content">
+    <div class="col-6" id="content" style="background-color: rgba(239, 242, 245, 0.877); border-radius: 5px; margin-top: 5px;">
         <div class="container">
             <router-outlet></router-outlet>
         </div>

@@ -6,6 +6,7 @@ import { SettingsRoutingModule } from './settings.routes';
 import { PrimengModule } from '../static/primeng.module';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ProfileupdateComponent } from './profileupdate/profileupdate.component'
     RouterModule.forChild([]),
     SettingsRoutingModule,
     PrimengModule
-  ]
+  ],
+  providers: [MessageService]
 })
 export class SettingsModule { }

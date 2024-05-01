@@ -34,9 +34,6 @@ export class PaiService {
   public getAllCommentList(){
     return this._http.get<any>("http://localhost:3300/commentslist");
   }
-  public getUserdata(userId:Number){
-    return this._http.get<any>(`http://localhost:3300/${userId}/userdata`);
-  }
   public CommentsListFromRemote(advertisementid: Number){
     return this._http.get<any>(`http://localhost:3300/${advertisementid}/commentslist`);
   }
@@ -49,12 +46,29 @@ export class PaiService {
   public LikeFromRemote(like:Like,userid:Number,advertisementid:Number):Observable<any>{
     return this._http.post<any>(`http://localhost:3300/${userid}/${advertisementid}/like`,like)
   }
-  public ProfileUpdateFromRemote(profile:Profile,userId:Number):Observable<any>{
-    return this._http.post<any>(`http://localhost:3300/${userId}/updateProfile`,profile)
-  }
+  //Updating profiles
   public getProfileList(userId:Number) {
     return this._http.get<any>(`http://localhost:3300/${userId}/profile`);
   }
+  public getUserdata(userId:Number){
+    return this._http.get<any>(`http://localhost:3300/${userId}/userdata`);
+  }
+  public ProfileSocialMediaUpdate(profile:Profile,userId:Number):Observable<any>{
+    return this._http.post<any>(`http://localhost:3300/${userId}/updateProfile/socialMediaLinks`,profile)
+  }
+  public ProfileBrandRecommendationUpdate(profile:Profile,userId:Number):Observable<any>{
+    return this._http.post<any>(`http://localhost:3300/${userId}/updateProfile/BrandRecommendation`,profile)
+  }
+  public ProfilepasswordUpdate(profile:Profile,userId:Number):Observable<any>{
+    return this._http.post<any>(`http://localhost:3300/${userId}/updateProfile/password`,profile)
+  }
+  public ProfilepersonalInformationUpdate(profile:Profile,userId:Number):Observable<any>{
+    return this._http.post<any>(`http://localhost:3300/${userId}/updateProfile/personalInformation`,profile)
+  }
+  public ProfilebrandInformationUpdate(profile:Profile,userId:Number):Observable<any>{
+    return this._http.post<any>(`http://localhost:3300/${userId}/updateProfile/brandInformation`,profile)
+  }
+  //-----------------------
   public getIDAdvertisements(advertisementid:Number){
     return this._http.get<any>(`http://localhost:3300/${advertisementid}/idadvertisements`);
   }

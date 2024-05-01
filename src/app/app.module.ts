@@ -15,6 +15,7 @@ import { PrivacyPolicyComponent } from './general/privacy-policy/privacy-policy.
 import { AppRoutingModule } from './app-routing.module';
 import { PrimengModule } from './static/primeng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { startingLetterPipe } from './static/startingLetterPipe.pipe';
 
 @NgModule({
   declarations: [

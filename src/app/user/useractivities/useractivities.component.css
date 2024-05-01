@@ -16,3 +16,6 @@
     left: 0;
     width: 100%;
 }
+:host ::ng-deep .p-button.p-button-text {
+    padding: 5px;
+}

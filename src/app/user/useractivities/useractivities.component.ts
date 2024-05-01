@@ -3,11 +3,13 @@ import { PaiService } from '../../paisa.service';
 import {HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { startingLetterPipe } from 'src/app/static/startingLetterPipe.pipe';
 import { Comments,Follower,Visited,Like, Block, Report,Favourite, Profile } from '../../paisa';
+import { ExponentialStrengthPipe } from 'src/app/static/exponential-strength.pipe';
 @Component({
   selector: 'app-useractivities',
   templateUrl: './useractivities.component.html',
-  styleUrls: ['./useractivities.component.css']
+  styleUrls: ['./useractivities.component.css'],
 })
 export class UseractivitiesComponent implements OnInit{
   constructor(private _service: PaiService,private http: HttpClient,private _router: Router,private _route: ActivatedRoute) {

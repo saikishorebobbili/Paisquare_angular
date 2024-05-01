@@ -1,3 +1,106 @@
+
+<div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Orders</span>
+                        <div class="text-900 font-medium text-xl">152</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                    </div>
+                </div>
+                <span class="text-green-500 font-medium">24 new </span>
+                <span class="text-500">since last visit</span>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Revenue</span>
+                        <div class="text-900 font-medium text-xl">$2.100</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-orange-100 border-round" style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-mamarker text-orange-500 text-xl"></i>
+                    </div>
+                </div>
+                <span class="text-green-500 font-medium">%52+ </span>
+                <span class="text-500">since last week</span>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Customers</span>
+                        <div class="text-900 font-medium text-xl">28441</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+                    </div>
+                </div>
+                <span class="text-green-500 font-medium">520  </span>
+                <span class="text-500">newly registered</span>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-3">
+            <div class="surface-card shadow-2 3 border-round">
+                <div class="flex justify-content-between mb-3">
+                    <div>
+                        <span class="block text-500 font-medium mb-3">Comments</span>
+                        <div class="text-900 font-medium text-xl">152 Unread</div>
+                    </div>
+                    <div class="flex align-items-center justify-content-center bg-purple-100 border-round" style="width:2.5rem;height:2.5rem">
+                        <i class="pi pi-comment text-purple-500 text-xl"></i>
+                    </div>
+                </div>
+                <span class="text-green-500 font-medium">85 </span>
+                <span class="text-500">responded</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col">
+    <div class="card">
+      <div class="card-header">Social Media</div>
+      <div class="card-body">
+        <div class="grid fluid">
+            <div class="col-12 md-6" *ngIf="profile.youtube">
+                <button ></button>
+            
+<a [style]="{'font-size': '2.5rem'}" [text]="true" icon="pi pi-youtube" href="profile.youtube" target="_blank"></a>
+            </div>
+            
+<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="danger "></p-button>
+              
+            <i class="pi pi-user" ></i>
+          <div class="col-12 md-6" *ngIf="profile.facebook">
+            <i class="pi pi-facebook"></i>
+          </div>
+          <div class="col-12 md-6" *ngIf="profile.instagram">
+            <i class="pi pi-instagram"></i>
+          </div>
+          <div class="col-12 md-6" *ngIf="profile.twitter">
+            <i class="pi pi-twitter"></i>
+          </div>
+          <div class="col-12 md-6" *ngIf="profile.pinterest">
+            <i class="pi pi-pinterest"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
 <div>
     <div class="container">
         <div class="grid"  >
@@ -23,10 +126,10 @@
     <div class="container">
         <div class="grid">
             <div class="col-12 md:col-6 sm:col-2">
-                <label>Bio</label>
+                <label>Description</label>
             </div>
             <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="username">{{profile.bio}}</label>
+                <label class="form-label" name="username">{{profile.brandDescription}}</label>
             </div>
         </div>
         <div class="grid">
@@ -34,7 +137,7 @@
                 <label>Brand Name</label>
             </div>
             <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="username">{{profile.brandname}}</label>
+                <label class="form-label" name="username">{{profile.brandName}}</label>
             </div>
         </div>
         <div class="grid">
@@ -50,7 +153,7 @@
                 <label>First Name</label>
             </div>
             <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="first_name">{{profile.firstname}}</label>
+                <label class="form-label" name="first_name">{{profile.advertiserName}}</label>
             </div>
         </div>
         <div class="grid">
@@ -58,7 +161,7 @@
                 <label>Last name</label>
             </div>
             <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="last_name">{{profile.lastname}}</label>
+                <label class="form-label" name="last_name">{{profile.advertiserName}}</label>
             </div>
         </div>
         <div class="grid">
@@ -74,15 +177,15 @@
                 <label>Number</label>
             </div>
             <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="number">{{profile.mobilenumber}}</label>
+                <label class="form-label" name="number">{{profile.mobileNumber}}</label>
             </div>
         </div>
         <div class="grid">
             <div class="col-12 md:col-6 sm:col-2">
-                <label>Address</label>
+                <label>brandLocation</label>
             </div>
             <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="address">{{profile.address}}</label>
+                <label class="form-label" name="brandLocation">{{profile.brandLocation}}</label>
             </div>
         </div>
         <div class="grid">
@@ -101,45 +204,8 @@
                 <label class="form-label"><a href="{{profile.website}}" target="_blank">{{profile.website}}</a></label>
             </div>
         </div>
-        <div class="grid">
-            <div class="col-12 md:col-6 sm:col-2">
-                <label style="color: rgb(0, 247, 144);">Youtube</label>
-            </div>
-            <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label"><a href="{{profile.youtube}}" target="_blank">{{profile.youtube}}</a></label>
-            </div>
-        </div>
-        <div class="grid">
-            <div class="col-12 md:col-6 sm:col-2">
-                <label style="color: rgb(0, 247, 144);">Facebook </label>
-            </div>
-            <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="facebook"><a href="{{profile.facebook}}" target="_blank">{{profile.facebook}}</a></label>
-            </div>
-        </div>
-        <div class="grid">
-            <div class="col-12 md:col-6 sm:col-2">
-                <label style="color: rgb(0, 247, 144);">Instagram</label>
-            </div>
-            <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label"><a href="{{profile.instagram}}" target="_blank">{{profile.instagram}}</a></label>
-            </div>
-        </div>
-        <div class="grid">
-            <div class="col-12 md:col-6 sm:col-2">
-                <label style="color: rgb(0, 247, 144);">Twitter</label>
-            </div>
-            <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="twitter"><a href="{{profile.twitter}}" target="_blank">{{profile.twitter}}</a></label>
-            </div>
-        </div>
-        <div class="grid">
-            <div class="col-12 md:col-6 sm:col-2">
-                <label style="color: rgb(0, 247, 144);">Pinterest</label>
-            </div>
-            <div class="col-12 md:col-8 sm:col-10">
-                <label class="form-label" name="pinterest"><a href="{{profile.pinterest}}" target="_blank">{{profile.pinterest}}</a></label>
-            </div>
-        </div>
+        <!-- Social Media Section -->
+
+  
     </div>
 </div>
