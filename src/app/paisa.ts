@@ -39,7 +39,7 @@ export class Profile{
     username!:string;
     brandName!:string;
     brandDescription!:string;
-    brandTagline!:string;
+    brandTagLine!:string;
     website!:string;
     advertiserName!:string;
     mobileNumber!:Number;

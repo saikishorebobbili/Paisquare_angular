@@ -24,7 +24,7 @@ export class LoginComponent {
         this._service.userName=data.username;
         console.log("in login button page clicked")
         //this._router.navigate(['advertiser'])
-        this._router.navigate(['/home/profileupdate'])
+        this._router.navigate(['home/profile/1'])
       },
         error=>{console.log("Error occured");
         this.message="Invalid email and password";

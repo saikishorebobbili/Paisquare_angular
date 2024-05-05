@@ -18,6 +18,7 @@ import { ProfileComponent } from '../settings/profile/profile.component';
     AdvertiserreportsComponent,
     AlladvertisementsComponent,
     UseractivitiesComponent,
+    ProfileComponent,
   ],
   imports: [
     RouterModule.forChild([]),

@@ -7,13 +7,14 @@ import { PrimengModule } from '../static/primeng.module';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
 import { MessageService } from 'primeng/api';
+import { HomepageComponent } from '../advertiser/Ad/advertisements/homepage.component';
 
 @NgModule({
   declarations: [
-    ProfileComponent,
-    ProfileupdateComponent
+    ProfileupdateComponent,
   ],
   imports: [
+    CommonModule,
     RouterModule.forChild([]),
     SettingsRoutingModule,
     PrimengModule

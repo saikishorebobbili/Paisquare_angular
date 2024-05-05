@@ -34,6 +34,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 const PRIMENG_MODULES:any[]=[
     CommonModule,
     InputMaskModule,
+    RatingModule,
     ReactiveFormsModule,
     SliderModule,
     ChipsModule,

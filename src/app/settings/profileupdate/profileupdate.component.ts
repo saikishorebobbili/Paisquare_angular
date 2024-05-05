@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Profile } from '../../paisa';
 import { Router } from '@angular/router';
 import { PaiService } from '../../paisa.service';
@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './profileupdate.component.html',
   styleUrls: ['./profileupdate.component.css']
 })
-export class ProfileupdateComponent {
+export class ProfileupdateComponent implements OnInit {
   messages: Message={ severity: 'success', summary: 'Success', detail: 'Message Content' };
   showMessageFor=''
   updatingInformation:boolean=false;
