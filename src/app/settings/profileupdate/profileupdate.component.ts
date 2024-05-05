@@ -262,21 +262,13 @@ export class ProfileupdateComponent {
   invalidPinCodesList:any;
   pinCodeValidator() {
     return (control: AbstractControl): ValidationErrors | null => {
-      console.log("pinCodeValidator called",control);
-
       const pinCodesStr: string = typeof control.value === 'string' ? control.value : control.value.toString();
-
       const pinCodes: string[] = pinCodesStr.split(',');
-  
       if(pinCodes.length==0){
         return null;
       }
-      console.log("pinCodes:", pinCodes);
-  
       const invalidPinCodes = pinCodes.filter(pin => !/^\d{8}$/.test(pin.trim()));
       this.invalidPinCodesList=invalidPinCodes.join(', ');
-      console.log("Invalid Pin Codes:", invalidPinCodes);
-  
       return invalidPinCodes.length > 0 ? { invalidPinCode: true } : null;
     };
   }

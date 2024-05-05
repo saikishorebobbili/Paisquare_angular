@@ -17,3 +17,8 @@ textarea{
     width: 250px;
     resize: vertical;
 }
+.p-inputtext {
+    box-shadow: none;
+    border-width: 2px;
+    border-color:#025492;
+}

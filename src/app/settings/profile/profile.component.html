@@ -1,3 +1,49 @@
+{{profile.youtube}}
+{{profile.facebook}}
+{{profile.instagram}}
+{{profile.twitter}}
+<div class="flex gap-4 ">
+    <div *ngIf="profile.youtube">
+        <a href="profile.youtube" target="_blank">
+            <i class="pi pi-youtube" style="font-size: 2rem"></i>
+        </a>
+    </div>
+    <div *ngIf="profile.facebook">
+        <a  href="profile.youtube" target="_blank">
+            <i class="pi pi-facebook" style="font-size: 2rem"></i>
+        </a>
+    </div>
+    <div *ngIf="profile.instagram">
+        <a  href="profile.youtube" target="_blank">
+            <i class="pi pi-instagram" style="font-size: 2rem"></i>
+        </a>
+    </div>
+    <div *ngIf="profile.twitter">
+        <a  href="profile.youtube" target="_blank">
+            <i class="pi pi-twitter" style="font-size: 2rem"></i>
+        </a>
+    </div>
+    <div *ngIf="profile.pinterest">
+        <a  href="profile.youtube" target="_blank">
+            <i class="pi pi-pinterest"></i>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<br>
+<br><br>
+
+
+
+
 
 <div class="surface-ground px-4 py-5 md:px-6 lg:px-8">
     <div class="grid">
@@ -63,36 +109,7 @@
         </div>
     </div>
 </div>
-<div class="col">
-    <div class="card">
-      <div class="card-header">Social Media</div>
-      <div class="card-body">
-        <div class="grid fluid">
-            <div class="col-12 md-6" *ngIf="profile.youtube">
-                <button ></button>
-            
-<a [style]="{'font-size': '2.5rem'}" [text]="true" icon="pi pi-youtube" href="profile.youtube" target="_blank"></a>
-            </div>
-            
-<p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="danger "></p-button>
-              
-            <i class="pi pi-user" ></i>
-          <div class="col-12 md-6" *ngIf="profile.facebook">
-            <i class="pi pi-facebook"></i>
-          </div>
-          <div class="col-12 md-6" *ngIf="profile.instagram">
-            <i class="pi pi-instagram"></i>
-          </div>
-          <div class="col-12 md-6" *ngIf="profile.twitter">
-            <i class="pi pi-twitter"></i>
-          </div>
-          <div class="col-12 md-6" *ngIf="profile.pinterest">
-            <i class="pi pi-pinterest"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 
 
