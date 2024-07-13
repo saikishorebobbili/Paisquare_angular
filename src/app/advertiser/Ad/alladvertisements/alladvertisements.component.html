@@ -1,0 +1,15 @@
+<div style="display: flex;" class="gap-2">
+    <p-chip label="All"></p-chip>
+    <p-chip label="Blogging"></p-chip>
+    <p-chip label="Agriculture"></p-chip>
+    <p-chip label="Software"></p-chip>
+    <p-chip label="Industry" [removable]="true"></p-chip>
+    <div class="card flex justify-content-center">
+        <p-multiSelect [options]="cities" [(ngModel)]="selectedCities" 
+        optionLabel="name"
+        optionValue="value" placeholder="Select location"
+        display="chip" [showClear]="true" ></p-multiSelect>
+    </div>
+</div>
+
+<app-homepage *ngFor="let ads of advertisements" [ad]="ads" (fetchData)="fetchadvertisement()"></app-homepage>

@@ -1,0 +1,75 @@
+
+<div class="flex justify-content-center">
+    <p-dropdown [options]="period" [(ngModel)]="selectedPeriod" (click)="selectedtype(selectedPeriod)"
+    optionLabel="name" optionValue="value"
+     placeholder="Select Period"></p-dropdown>
+</div>
+
+<br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Visitor graphs</h2>
+                </div>
+                <div class="card-body" *ngIf="!noDataVisitors; else elseblock">
+                    <p-chart type="line" [data]="visitors" [options]="options"></p-chart>
+                </div>
+                <ng-template #elseblock>
+                    <div class="card-body" style="width: 100%; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <h2 style="color: rgb(109, 122, 122);">No data available</h2>
+                    </div>
+                </ng-template>
+            </div><br>
+        </div><br>
+        <div class="col-12 ">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Followers Graph</h2>
+                </div>
+                <div class="card-body" *ngIf="!noDataFollowers; else elseblock">
+                    <p-chart type="line" [data]="followers" [options]="options"></p-chart>
+                </div>
+                <ng-template #elseblock>
+                    <div class="card-body" style="width: 100%; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <h2 style="color: rgb(109, 122, 122);">No data available</h2>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div><br><br>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Likes Graph</h2>
+                </div>
+                <div class="card-body" *ngIf="!noDataLikes; else elseblock">
+                    <p-chart type="line" [data]="likes" [options]="options"></p-chart>
+                </div>
+                <ng-template #elseblock>
+                    <div class="card-body" style="width: 100%; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <h2 style="color: rgb(109, 122, 122);">No data available</h2>
+                    </div>
+                </ng-template>
+            </div>
+        </div><br>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>added to favourites</h2>
+                </div>
+                <div class="card-body">
+                    <p-chart *ngIf="!noDataFavourite; else elseblock" type="line" [data]="favourite" [options]="options"></p-chart>
+                </div>
+                <ng-template #elseblock>
+                    <div class="card-body" style="width: 100%; height: 500px; display: flex; justify-content: center; align-items: center;">
+                        <h2 style="color: rgb(109, 122, 122);">No data available</h2>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>

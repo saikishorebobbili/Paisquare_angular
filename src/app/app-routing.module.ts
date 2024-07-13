@@ -1,41 +1,56 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './landingpage/login/login.component';
-import { LandingpageComponent } from './landingpage/landingpage.component';
-import { RegistrationComponent } from './landingpage/registration/registration.component';
-import { HomepageComponent } from './homepage/advertisements/homepage.component';
-import { AdvertisementformComponent } from './homepage/advertisementform/advertisementform.component';
 import { LandingcontentComponent } from './landingpage/landingcontent/landingcontent.component';
-import { ContactusComponent } from './contactus/contactus.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ProfileupdateComponent } from './profileupdate/profileupdate.component';
-import { AdvertiserreportsComponent } from './advertiserreports/advertiserreports.component';
-import { UseractivitiesComponent } from './homepage/useractivities/useractivities.component';
-import { AlladvertisementsComponent } from './homepage/alladvertisements/alladvertisements.component';
-import { AdvertiserdashboardComponent } from './advertiserdashboard/advertiserdashboard.component';
+import { LoginComponent } from './landingpage/login/login.component';
+import { RegistrationComponent } from './landingpage/registration/registration.component';
+import { TermsandConditionsComponent } from './general/termsand-conditions/termsand-conditions.component';
+import { PrivacyPolicyComponent } from './general/privacy-policy/privacy-policy.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ContactusComponent } from './general/contactus/contactus.component';
+import { AboutUSComponent } from './general/about-us/about-us.component';
+import { ProfileComponent } from './settings/profile/profile.component';
+
 const routes: Routes = [
-  { path: 'profileupdate', component:ProfileupdateComponent},
-  { path: 'login', component:LoginComponent },
-  { path: 'advertisementform', component:AdvertisementformComponent},
-  { path: 'createaccount', component:RegistrationComponent },
-  { path: 'alladvertisements', component:AlladvertisementsComponent },
-  { path: 'contactus',component:ContactusComponent},
-  { path: 'advertisement/:id', component: AlladvertisementsComponent }, 
-  { path: 'myadvertisement/:userId', component: AlladvertisementsComponent },
-  { path: 'profile/:id', component:ProfileComponent},
-  { path: 'block/:id', component:LandingcontentComponent},
-  { path: 'reportadvertisement/:id', component:LandingcontentComponent},
-  { path: 'save/:id', component:LandingcontentComponent},
-  { path: 'advertiserreport', component:AdvertiserreportsComponent},
-  { path: 'useractivities', component:UseractivitiesComponent},
-  {path: 'advertiserdashboard',component:AdvertiserdashboardComponent},
-  {path: 'home',component:NavbarComponent},
-  { path: '', component:LandingcontentComponent}
+  {
+    path: 'advertiser',
+    loadChildren: () => import('./advertiser/advertiser.module').then(m => m.AdvertiserModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    
+  },
+  { 
+    path:'general',
+    component:NavbarComponent,
+    children:[
+      { path:'app-termsand-conditions',component: TermsandConditionsComponent},
+      { path:'app-privacy-policy',component:PrivacyPolicyComponent},
+      { path:'contactUs',component:ContactusComponent},
+      { path:'aboutUs',component:AboutUSComponent},
+      { path: 'profile/:id', component: ProfileComponent},
+    ]
+  },
+  {
+    path:'visit',
+    component:NavbarComponent,
+    children:[
+      { path: 'profile/:id', component: ProfileComponent},
+    ]
+  },
+  { path:'app-termsand-conditions',component: TermsandConditionsComponent},
+  { path:'app-privacy-policy',component:PrivacyPolicyComponent},
+  { path: 'login', component: LoginComponent },
+  { path: 'createaccount', component: RegistrationComponent },
+  { path: '', component: LandingcontentComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

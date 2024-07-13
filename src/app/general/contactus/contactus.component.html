@@ -1,0 +1,45 @@
+
+<br>
+<div class="grid">
+    <div class="col-12 sm:col-offset-2 sm:col-10 md:col-7">
+        <p-card class="card algin-contet-center">
+            <h2 style="text-align: center;">Contact Us</h2>
+            <form #contactusform="ngForm" (ngSubmit)="contactusForm()">
+                <h3 style="color: green;">{{message}}</h3>
+                <div class="container"><br>
+                    <div class="grid form-group">
+                        <label class="form-group-label col-12 bg:col-3 sm:col-3">Name</label>
+                        <div class="col-12 sm:col-7 bg:col-7">
+                            <input pInputText class="form-control" name="name" id="contactname" type="text" placeholder="Enter your name" [(ngModel)]="contactus.name" >
+                        </div>
+                        <span class="col-12 sm:col-2 bg:col-2" id="contactname2"> </span>
+                    </div> <br>
+                    <div class="grid form-group">
+                        <label class="form-group-label col-12 bg:col-3 sm:col-3">Email</label>
+                        <div class="col-12 sm:col-7 bg:col-7">
+                            <input pInputText class="form-control" name="email" id="contactemail" type="text" placeholder="Enter your email id" title="Enter properly" onblur="email()" [(ngModel)]="contactus.email" required>
+                        </div>
+                        <span class="col-12 sm:col-2 bg:col-2" id="contactemail2"> </span>
+                    </div><br>
+                    <div class="grid form-group">
+                        <label class="form-group-label col-12 bg:col-3 sm:col-3">Mobile number</label>
+                        <div class="col-12 sm:col-7 bg:col-7">
+                            <input pInputText class="form-control" name="email" id="contactemail" type="text" placeholder="Enter your mobile number" title="Enter properly" onblur="email()" [(ngModel)]="contactus.mobileNumber" required>
+                        </div>
+                        <span class="col-12 sm:col-2 bg:col-2" id="contactemail2"> </span>
+                    </div><br>
+                    <div class="grid form-group">
+                        <label class="form-group-label col-12 bg:col-3 sm:col-3" id="contactusissue">Issue</label>
+                        <div class="col-12 sm:col-7 bg:col-7">
+                            <textarea pInputTextarea class="form-control" name="querry" id="contactissue" type="text" placeholder="describe issue" onblur="issue()" [(ngModel)]="contactus.issue" required></textarea>
+                        </div>
+                        <span class="col-12 sm:col-2 bg:col-2" id="contactissue2"> </span>
+                    </div><br>
+                    <div style="text-align: center;">
+                        <button pButton type="submit" class="btn btn-primary" >Send my query</button>
+                    </div><br>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</div>
